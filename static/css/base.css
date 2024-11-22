@@ -27,6 +27,17 @@
     transition: border-bottom 0.3s ease-in;
 }
 
-.nav-item:hover {
-    border-bottom: 2px solid black;
+.nav-item:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.nav-item:hover:after {
+    width: 100%;
+    background: black;
 }
