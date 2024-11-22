@@ -1,3 +1,5 @@
+Python v.3.12.1
+
 git clone https://github.com/tsiapalis/webshop_group.git
 
 cd at the repos location
