@@ -1,6 +1,18 @@
 {% extends "core_app/base.html" %}
+{% load static %}
+
 {% block body_block %}
-<div>
-    <h1>Candles</h1>
+<div class="homepage d-flex justify-content-center align-items-center">
+
+    <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+        <h1 class=" stick-no-bills-font fs-1 fw-bold">Candles</h1>
+        <p class="abhaya-libre-regular fs-5 fw-bold text-center">This is candles!!!</p>
+        <button type="button" class="btn btn-dark">
+            <a class="abhaya-libre-regular text-light fs-4 text-decoration-none" href="#">
+                Discover our collection
+            </a>
+        </button>
+    </div>
+
 </div>
 {% endblock %}

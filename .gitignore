@@ -1,5 +1,7 @@
 # Virtual environment
 env/
+venv/
+.venv/
 
 # Python-related files
 *.pyc
@@ -13,3 +15,7 @@ db.sqlite3
 # Other
 *.DS_Store
 gi
+
+#idea
+.idea
+/idea
