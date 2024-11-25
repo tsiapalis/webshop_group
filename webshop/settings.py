@@ -17,6 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPATES_DIR = BASE_DIR / 'templates'
 STATIC_DIR = BASE_DIR / 'static'
 
+MEDIA_DIR = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/

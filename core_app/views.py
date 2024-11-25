@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from .models import Candle
 from .forms import RegistrationForm
 
 # Create your views here.
@@ -16,12 +17,16 @@ class CustomLogoutView(LogoutView):
 def index(request):
     return render(request, 'core_app/index.html')
 
+def discovery(request):
+    items = Candle.objects.all()
+    return render(request, 'core_app/discovery.html', {'items': items})
+
 def about(request):
     return render(request, 'core_app/about.html')
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)   
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
