@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    
+}
+
+footer {
+    margin-top: auto;
+}
+
+
 .stick-no-bills-font {
     font-family: 'Stick No Bills', sans-serif;
     font-weight: 400;
@@ -40,4 +53,75 @@
 .nav-item:hover:after {
     width: 100%;
     background: black;
+}
+
+
+
+
+
+/* Footer Section */
+body .footer-section {
+    background: #272727;
+    padding-top: 1rem;
+}
+
+/* Horizontal Line */
+.footer-line {
+    border: 1.5px solid #FFFFFF;
+    margin: 1.5rem 0;
+}
+
+/* Footer Content: Left Section */
+.footer-title {
+    font-family: 'Post No Bills Colombo ExtraBold';
+    font-size: 40px;
+    color: #E1E1E1;
+    font-weight: 800;
+    line-height: 57.6px;
+    text-align: left;
+}
+
+.footer-description {
+    font-family: 'Poppins';
+    color: #E1E1E1;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.8px;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+/* Footer Content: Right Section */
+.footer-contact {
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    line-height: 28.8px;
+}
+
+.contact-title {
+    color: #56B280;
+    font-weight: bold;
+}
+
+.contact-text {
+    color: #E1E1E1;
+    margin-bottom: 0;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    background: #E5E5E5;
+    padding: 0.75rem 0;
+    width: 100%;
+}
+
+.footer-bottom-text {
+    font-family: 'Poppins';
+    color: #5E6E89;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 0;
 }
