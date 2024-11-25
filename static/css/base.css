@@ -8,6 +8,12 @@
     font-weight: 500;
 }
 
+.abhaya-libre-regular {
+    font-family: "Abhaya Libre", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .material-symbols-outlined {
     font-variation-settings:
         'FILL' 0,
