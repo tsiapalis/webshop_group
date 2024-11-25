@@ -14,3 +14,7 @@ class CustomLogoutView(LogoutView):
     
 def index(request):
     return render(request, 'core_app/index.html')
+
+
+def about(request):
+    return render(request, 'core_app/about.html')
