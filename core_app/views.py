@@ -10,3 +10,7 @@ class CustomLoginView(LoginView):
 
 class CustomLogoutView(LogoutView):
     next_page = '/'                # redirected to homepage after logout
+
+    
+def index(request):
+    return render(request, 'core_app/index.html')
