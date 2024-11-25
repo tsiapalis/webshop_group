@@ -3,12 +3,15 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    
+    background-color: #F5F5ED !important;
 }
 
 footer {
     margin-top: auto;
 }
+
+
+    
 
 
 .stick-no-bills-font {
@@ -19,6 +22,12 @@ footer {
 .roboto-font {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 500;
+}
+
+.abhaya-libre-regular {
+    font-family: "Abhaya Libre", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .material-symbols-outlined {
@@ -124,4 +133,14 @@ body .footer-section {
     line-height: 28px;
     text-align: left;
     margin-bottom: 0;
+}
+.homepage {
+    background-color: #f5f5f5;
+    background-image: url('/static/images/candles.jpg');
+    height: 110vh;
+    width: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

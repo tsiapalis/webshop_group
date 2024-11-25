@@ -6,7 +6,9 @@ app_name = 'core_app'
 urlpatterns = [
 
     path('', views.index, name='index'),
+    path('discovery/', views.discovery, name='discovery'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('about/', views.about, name='about'),
+    path('registration/', views.register, name='registration')
 ]
