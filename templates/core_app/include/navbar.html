@@ -1,0 +1,35 @@
+<nav class="navbar bg-light px-5">
+    <div class="container-fluid d-flex justify-content-between align-items-center"></div>
+    <a class="navbar-brand stick-no-bills-font fs-1 fw-normal" href="{% url 'core_app:index' %}">Candles</a>
+
+    <ul class="nav test">
+        <li class="nav-item">
+            <a class="nav-link text-dark roboto-font fs-4" href="{% url 'core_app:discovery' %}">Discovery</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark roboto-font fs-4" href="{% url 'core_app:about' %}">About</a>
+        </li>
+    </ul>
+
+    <div class="nav">
+        <div class="dropdown">
+            <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <span class="material-symbols-outlined text-dark fs-1 me-3">
+                    person
+                </span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+        </div>
+
+        <a href="#">
+            <span class="material-symbols-outlined text-dark fs-1">
+                shopping_cart
+            </span>
+        </a>
+    </div>
+</nav>

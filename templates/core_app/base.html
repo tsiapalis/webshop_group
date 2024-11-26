@@ -39,70 +39,12 @@
 </head>
 
 <body>
-    <nav class="navbar bg-light px-5">
-        <div class="container-fluid d-flex justify-content-between align-items-center"></div>
-        <a class="navbar-brand stick-no-bills-font fs-1 fw-normal" href="{% url 'core_app:index' %}">Candles</a>
-
-        <ul class="nav test">
-            <li class="nav-item">
-                <a class="nav-link text-dark roboto-font fs-4" href="{% url 'core_app:discovery' %}">Discovery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark roboto-font fs-4" href="{% url 'core_app:about' %}">About</a>
-            </li>
-        </ul>
-
-        <div class="nav">
-            <div class="dropdown">
-                <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <span class="material-symbols-outlined text-dark fs-1 me-3">
-                        person
-                    </span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
-                    <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
-                    <li><a class="dropdown-item" href="{% url 'core_app:logout_success' %}">Logout</a></li>
-                </ul>
-            </div>
-
-            <a href="#">
-                <span class="material-symbols-outlined text-dark fs-1">
-                    shopping_cart
-                </span>
-            </a>
-        </div>
-        </div>
-    </nav>
-
+    {% include 'core_app/include/navbar.html' %}
     <div>
         {% block body_block %}
         {% endblock %}
     </div>
-
-
-    <!-- Footer Section -->
-    <footer class="bg-dark pt-4 w-100">
-        <div class="container-fluid">
-            <div class="row text-light px-5">
-                <div class="border border-1 border-light mb-3"></div>
-                <div class="col-md-6">
-                    <h5 class="navbar-brand stick-no-bills-font fs-1 fw-normal">Candles</h5>
-                    <p class="abhaya-libre-regular">Candles glow and are kind of warm.</p>
-                </div>
-                <div class="col-md-6 text-md-end abhaya-libre-regular">
-                    <h3 class="text-bold text-success">Contact Info</h3>
-                    <p class="m-0">candles@email.com</p>
-                    <p class="m-0">070 696 12 55</p>
-                </div>
-            </div>
-            <div class="row footer-bottom py-1 px-5">
-                <p class="text-dark m-0">&copy; Candles All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    {% include 'core_app/include/footer.html' %}
 </body>
 
 </html>
