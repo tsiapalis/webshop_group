@@ -12,6 +12,11 @@
     </ul>
 
     <div class="nav">
+            {% if user.is_authenticated %}
+                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Welcome, {{ user.username }}!</p> 
+            {% else %}
+                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Not logged in</p>
+            {% endif %}
         <div class="dropdown">
             <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">
