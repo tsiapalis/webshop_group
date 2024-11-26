@@ -5,6 +5,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse
 from .models import Candle
 from .forms import RegistrationForm
+from django.contrib import messages
+from django.contrib.auth.models import User
+from .forms import ResetPasswordForm
+
 
 # Create your views here.
 class CustomLoginView(LoginView):
@@ -47,4 +51,28 @@ def register(request):
         form = RegistrationForm()
 
     return render(request, 'core_app/registration.html', {'form': form})
+
+
+def reset_password(request):
+    if request.method == "POST":
+        form = ResetPasswordForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            email = form.cleaned_data["email"]
+            new_password = form.cleaned_data["new_password"]
+
+            # Check if the user exists with the given username and email
+            try:
+                user = User.objects.get(username=username, email=email)
+                user.set_password(new_password)  
+                user.save()  
+                messages.success(request, "Password reset successfully!")
+                return redirect("core_app:login")  
+            except User.DoesNotExist:
+                messages.error(request, "No user found with the given username and email!")
+                return redirect("core_app:reset_password")
+    else:
+        form = ResetPasswordForm()
+
+    return render(request, "core_app/reset_password.html", {"form": form})
 
