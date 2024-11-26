@@ -1,0 +1,33 @@
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 48;
+
+    transition: scale 0.3s ease-in-out;
+}
+
+.material-symbols-outlined:hover {
+    scale: 1.2;
+}
+
+.nav-item {
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease-in;
+}
+
+.nav-item:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.nav-item:hover:after {
+    width: 100%;
+    background: black;
+}

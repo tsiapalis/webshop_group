@@ -1,0 +1,34 @@
+{% extends "core_app/base.html" %}
+{% load static %}
+
+{% block footer_block %}
+<footer class="footer-section bg-dark text-light">
+    <div class="container">
+        <!-- Horizontal Line -->
+        <hr class="footer-line">
+        <!-- Footer Content -->
+        <div class="row">
+            <!-- Left Section: Candles Description -->
+            <div class="col-md-6">
+                <h5 class="navbar-brand stick-no-bills-font fs-1 fw-normal">Candles</h5>
+                <p class="footer-description">
+                    Candles glow and are kind of warm.
+                </p>
+            </div>
+            <!-- Right Section: Contact Info -->
+            <div class="col-md-6 text-md-end footer-contact">
+                <h5 class="contact-title">Contact Info</h5>
+                <p class="contact-text">candles@email.com</p>
+                <p class="contact-text">070 696 12 55</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="footer-bottom-text">&copy; Candles All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+{% endblock %}
