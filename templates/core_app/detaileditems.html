@@ -1,0 +1,77 @@
+{% extends 'core_app/base.html' %}
+
+{% block body_block %}
+
+    <div class="container background_color">
+        
+        <div id="detail-content" class="container mt-5">
+            <div class="row">
+                <div class="col-lg boxy left_side" >
+                    <div class="row product-preview">
+                        <img src="#">
+                    </div>
+                    <div class="row product-info">
+                        <p>All hand-made with natural soy wax</p>
+                        <span></span><p class="free-shipping-info">FREE SHIPPING</p>
+                    </div>
+                </div>
+                <div class="col-lg boxy right_side" >
+                    <div class="container py-5">
+                        <div class="row">
+                          <!-- Left Section (Quantity) -->
+                          <div class="col-md-6 d-flex flex-column align-items-start" style="padding-top:50px;">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <div class="d-flex align-items-center">
+                              <button class="btn btn-outline-success btn-sm" id="decrement" type="button">-</button>
+                              <input type="text" id="quantity" class="form-control text-center mx-2" value="1" style="width: 50px;" readonly>
+                              <button class="btn btn-outline-success btn-sm" id="increment" type="button">+</button>
+                            </div>                           
+                          </div>
+                    
+                          <!-- Right Section (Subscription and Add to Cart) -->
+                          <div class="col-md-6">
+                            <div class="mb-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="purchaseType" id="oneTime" checked>
+                                <label class="form-check-label" for="oneTime">
+                                  One time purchase
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="purchaseType" id="subscribe">
+                                <label class="form-check-label" for="subscribe">
+                                  Subscribe and delivery every
+                                </label>
+                                <select class="form-select mt-2" id="subscriptionDuration" style="max-width: 150px;">
+                                  <option value="4 weeks">4 weeks</option>
+                                  <option value="8 weeks">8 weeks</option>
+                                  <option value="12 weeks">12 weeks</option>
+                                </select>
+                                <small class="text-muted">
+                                  Subscribe now and get the 10% off discount on every recurring order. The discount will be applied at checkout. 
+                                  <a href="#">See details</a>
+                                </small>
+                              </div>
+                            </div>
+                            <button class="btn btn-outline-success btn-lg w-100">+ Add to cart</button>
+                          </div>
+                        </div>
+                    
+                        <!-- Product Details -->
+                        <div class="row mt-5">
+                          <div class="col-12">
+                            <div class="product-details bg-light p-3">
+                              <p><strong>Wax:</strong> Top grade Soy wax that delivers a smoke-less, consistent burn</p>
+                              <p><strong>Fragrance:</strong> Premium quality ingredients with natural essential oils</p>
+                              <p><strong>Burning Time:</strong> 70-75 hours <strong>Dimension:</strong> 10cm x 5cm <strong>Weight:</strong> 400g</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div> 
+
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}

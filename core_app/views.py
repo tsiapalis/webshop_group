@@ -18,3 +18,6 @@ def index(request):
 
 def about(request):
     return render(request, 'core_app/about.html')
+
+def detaileditems(request):
+    return render(request, 'core_app/detaileditems.html')
