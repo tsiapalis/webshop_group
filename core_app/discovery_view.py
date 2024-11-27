@@ -5,8 +5,11 @@ from django.http import HttpResponseRedirect
 
 class Discovery(View):
     def get(self, request):
+        cart = request.session.get('cart', {})
+        cart_count = sum(cart.values())
+
         items = Candle.objects.all()
-        return render(request, 'core_app/discovery.html', {'items': items})
+        return render(request, 'core_app/discovery.html', {'cart_count': cart_count, 'items': items})
 
     def post(self, request): 
         product_id  = request.POST.get('product') 
