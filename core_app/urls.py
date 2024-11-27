@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
+from .discovery_view import Discovery
 
 app_name = 'core_app'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('discovery/', views.discovery, name='discovery'),
+    path('discovery/', Discovery.as_view(), name='discovery'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('logout/success/', views.logout_success, name='logout_success'),

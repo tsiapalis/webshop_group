@@ -32,9 +32,6 @@ def submit_review(request):
 def index(request):
     return render(request, 'core_app/index.html')
 
-def discovery(request):
-    items = Candle.objects.all()
-    return render(request, 'core_app/discovery.html', {'items': items})
 
 def about(request):
     return render(request, 'core_app/about.html')
@@ -75,4 +72,3 @@ def reset_password(request):
         form = ResetPasswordForm()
 
     return render(request, "core_app/reset_password.html", {"form": form})
-
