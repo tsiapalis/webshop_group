@@ -15,10 +15,14 @@ class Item(models.Model):
         return self.title
 
 class Candle(Item):
+    burn_time = models.CharField(max_length=255)
+    material = models.CharField(max_length=255)
     CATEGORY_CHOICES = [
         ('SC', 'Scented'),
-        ('US', 'Unscented'),
+        ('PI', 'Pillar'),
         ('DE', 'Decrotive'),
+        ('TW', 'Twisted'),
+        ('TA', 'Tapper'),
     ]
     category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
     image = models.ImageField(upload_to='candles/', blank=True, null=True)
