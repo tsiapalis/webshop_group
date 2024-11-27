@@ -35,6 +35,9 @@ def discovery(request):
 def about(request):
     return render(request, 'core_app/about.html')
 
+def cart(request):
+    return render(request, 'core_app/cart.html')
+
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
