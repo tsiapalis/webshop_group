@@ -13,28 +13,46 @@
 
     <div class="nav">
             {% if user.is_authenticated %}
-                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Welcome, {{ user.username }}!</p> 
+                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Welcome, {{ user.username }}!</p>
+                <div class="dropdown">
+                    <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span class="material-symbols-outlined text-dark fs-1 me-3">
+                            person
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
+                        <li><a class="dropdown-item" href="{% url 'core_app:logout_success' %}">Logout</a></li>
+                    </ul>
+                </div>
+        
+                <a href="#">
+                    <span class="material-symbols-outlined text-dark fs-1">
+                        shopping_cart
+                    </span>
+                </a>
             {% else %}
-                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Not logged in</p>
+                <p style="padding-top: 18px; font-size: 14px; font-weight: bold§§; padding-right: 8px;">Not logged in</p>
+                <div class="dropdown">
+                    <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <span class="material-symbols-outlined text-dark fs-1 me-3">
+                            person
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
+                        <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
+                    </ul>
+                </div>
+        
+                <a href="#">
+                    <span class="material-symbols-outlined text-dark fs-1">
+                        shopping_cart
+                    </span>
+                </a>
             {% endif %}
-        <div class="dropdown">
-            <button class="p-0 border-0 bg-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <span class="material-symbols-outlined text-dark fs-1 me-3">
-                    person
-                </span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
-                <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
-                <li><a class="dropdown-item" href="{% url 'core_app:logout_success' %}">Logout</a></li>
-            </ul>
-        </div>
 
-        <a href="#">
-            <span class="material-symbols-outlined text-dark fs-1">
-                shopping_cart
-            </span>
-        </a>
     </div>
 </nav>
