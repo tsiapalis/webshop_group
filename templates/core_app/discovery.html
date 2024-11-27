@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body_block %}
-<div class="base-container container mt-100 mt-60 p-5">
+<div class="container mt-100 mt-60 p-5">
     <div class="row">
         <div class="col-12 text-center">
             <div class="section-title mb-4 pb-2">
@@ -12,12 +12,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="products-container row">
         {% for item in items %}
         <div class="col-lg-4 col-md-6 mt-4 pt-2">
             <div class="item rounded border shadow-lg">
                 <div class="d-block overflow-hidden position-relative">
-                    <img class="img-fluid rounded-top" src="{{ item.image.url }}" alt="{{ item.title }}">
+                    <img class="img-fluid rounded-top" src="{{ item.image }}" alt="{{ item.title }}">
                     <div class="overlay rounded-top bg-dark"></div>
                 </div>
                 <div class="content p-3">
