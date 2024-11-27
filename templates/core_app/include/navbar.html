@@ -13,7 +13,7 @@
 
     <div class="nav">
             {% if user.is_authenticated %}
-                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Welcome, {{ user.username }}!</p> 
+                <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Welcome, {{ user.username }}!</p>
             {% else %}
                 <p style="padding-top: 18px; font-size: 14px; font-weight: bold; padding-right: 8px;">Not logged in</p>
             {% endif %}
