@@ -2,8 +2,8 @@
 
 {% block body_block %}
     <div class="container">
-        <h1>You have successfully logged out!</h1>
-        <p>Thank you for using our platform. We value your feedback!</p>
+        <h1>Before you log out!</h1>
+        <p>Thank you for using our platform, {{ user }}. We value your feedback!</p>
 
         <h5>Would you like to leave a review? (Optional)</h5>
         <form method="POST" action="{% url 'core_app:submit_review' %}">
@@ -18,7 +18,7 @@
                 <label>Rate your experience:</label><br>
                 <!-- Emoji rating buttons -->
                 <label>
-                    <input type="radio" name="rating" value="1">
+                    <input type="radio" name="rating" value="1" required>
                     😞 Not Great
                 </label><br>
                 <label>
@@ -39,7 +39,10 @@
                 </label><br>
             </div><br>
 
-            <button type="submit">Submit Review</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+                <a href="{% url 'core_app:index' %}" class="btn btn-secondary" role="button">No, thanks...</a>
+            </div>
         </form>
 
         <p><a href="{% url 'core_app:login' %}">Login again</a></p>
