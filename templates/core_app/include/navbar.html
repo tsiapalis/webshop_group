@@ -20,9 +20,12 @@
                 </span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'core_app:logout' %}">Logout</a></li>
+                {% else %}
                 <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
                 <li><a class="dropdown-item" href="{% url 'core_app:registration' %}">Register</a></li>
-                <li><a class="dropdown-item" href="{% url 'core_app:logout_success' %}">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
 
