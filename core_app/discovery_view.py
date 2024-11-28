@@ -17,17 +17,19 @@ class Discovery(View):
 
 
     def post(self, request): 
-        product_id  = request.POST.get('product') 
+        product_id  = request.POST.get('product')
+        quantity_to_add  = int(request.POST.get('quantity'))
+
         cart = request.session.get('cart') 
         if cart: 
             quantity = cart.get(product_id) 
             if quantity: 
-                cart[product_id] = quantity+1
+                cart[product_id] = quantity+quantity_to_add
             else: 
-                cart[product_id] = 1
+                cart[product_id] = quantity_to_add
         else: 
             cart = {} 
-            cart[product_id] = 1
+            cart[product_id] = quantity_to_add
 
         request.session['cart'] = cart 
         print('cart', request.session['cart']) 
