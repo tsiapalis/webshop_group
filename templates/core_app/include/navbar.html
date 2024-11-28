@@ -27,9 +27,15 @@
         </div>
 
         <a href="#">
-            <span class="material-symbols-outlined text-dark fs-1">
+            {% if cart_count > 0 %}
+            <span class="material-symbols-outlined filled text-dark fs-1"">
                 shopping_cart
             </span>
+            {% else %}
+            <span class=" material-symbols-outlined text-dark fs-1">
+                shopping_cart
+            </span>
+            {% endif %}
         </a>
     </div>
 </nav>

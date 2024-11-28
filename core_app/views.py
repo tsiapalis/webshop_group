@@ -30,11 +30,10 @@ def submit_review(request):
 
 
 def index(request):
-    return render(request, 'core_app/index.html')
+    cart = request.session.get('cart', {})
+    cart_count = sum(cart.values())
+    return render(request, 'core_app/index.html', {'cart_count': cart_count})
 
-def discovery(request):
-    items = Candle.objects.all()
-    return render(request, 'core_app/discovery.html', {'items': items})
 
 def about(request):
     return render(request, 'core_app/about.html')
@@ -75,4 +74,3 @@ def reset_password(request):
         form = ResetPasswordForm()
 
     return render(request, "core_app/reset_password.html", {"form": form})
-
