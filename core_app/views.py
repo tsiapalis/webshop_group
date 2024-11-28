@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class LoginView(LoginView):
-    template_name = 'core_app/login.html'   #custom login page template
+    template_name = 'core_app/auth/login.html'   #custom login page template
     success_url = '/'              # redirected to homepage after login
 
 @login_required
@@ -63,7 +63,7 @@ def register(request):
     else:
         form = RegistrationForm()
 
-    return render(request, 'core_app/registration.html', {'form': form})
+    return render(request, 'core_app/auth/registration.html', {'form': form})
 
 
 def reset_password(request):
@@ -87,4 +87,4 @@ def reset_password(request):
     else:
         form = ResetPasswordForm()
 
-    return render(request, "core_app/reset_password.html", {"form": form})
+    return render(request, "core_app/auth/reset_password.html", {"form": form})
