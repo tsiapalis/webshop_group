@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Candle, Review
 from .forms import RegistrationForm
 from django.contrib import messages
@@ -10,14 +10,15 @@ from django.contrib.auth.models import User
 from .forms import ResetPasswordForm
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
-class CustomLoginView(LoginView):
+class LoginView(LoginView):
     template_name = 'core_app/login.html'   #custom login page template
     success_url = '/'              # redirected to homepage after login
 
-class CustomLogoutView(LogoutView):
-    next_page = '/logout/success/'                # redirected to homepage after logout
+@login_required
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/logout/success')
 
 def logout_success(request):
     return render(request, 'core_app/logout_success.html', {'user' : request.user})
@@ -58,7 +59,7 @@ def register(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('core_app:index')
+            return redirect('core_app:login')
     else:
         form = RegistrationForm()
 
