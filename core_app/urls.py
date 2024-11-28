@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import auth_views
 from .discovery_view import Discovery
 
 app_name = 'core_app'
@@ -7,11 +8,11 @@ app_name = 'core_app'
 urlpatterns = [
     path('', views.index, name='index'),
     path('discovery/', Discovery.as_view(), name='discovery'),
-    path('login/', views.CustomLoginView.as_view(), name='login'),
-    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
-    path('logout/success/', views.logout_success, name='logout_success'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.logout_view, name='logout'),
+    path('logout/success/', auth_views.logout_success, name='logout_success'),
     path('submit_review/', views.submit_review, name='submit_review'),
     path('about/', views.about, name='about'),
-    path('registration/', views.register, name='registration'),
-    path('reset-password/', views.reset_password, name='reset_password'),
+    path('registration/', auth_views.RegisterView.as_view(), name='registration'),
+    path('reset-password/', auth_views.ResetPasswordView.as_view(), name='reset_password'),
 ]
