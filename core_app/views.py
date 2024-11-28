@@ -36,11 +36,17 @@ def submit_review(request):
             )
             review_data.save()
 
+            logout(request)
             return redirect('core_app:index')
         else:
+            logout(request)
             return HttpResponse('Invalid submission.', status=400)
+    logout(request)
     return HttpResponse('Invalid request', status=400)
 
+def logout_without_review(request):
+    logout(request)
+    return redirect('core_app:index')
 
 def index(request):
     cart = request.session.get('cart', {})
