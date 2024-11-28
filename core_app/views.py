@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Candle, Review
-from .forms import RegistrationForm
-from django.contrib import messages
-from django.contrib.auth.models import User
-from .forms import ResetPasswordForm
+from django.http import HttpResponse
+from .models import Review, Candle
 from django.contrib.auth.decorators import login_required
+
+from django.shortcuts import render
 
 @login_required
 def submit_review(request):

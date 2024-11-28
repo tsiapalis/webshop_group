@@ -1,0 +1,44 @@
+{% extends 'core_app/base.html' %}
+
+
+{% block body_block %}
+<div class="base-container container mt-5">
+  <h1 class="text-center pb-4 stick-no-bills-font fs-1 h2">{{ item.title }}</h1>
+  <div class="row">
+    <div class="col-lg d-flex flex-column align-items-center h4">
+      <img class="img-fluid" style="width: 433px; height: 433px;" src="{{ item.image }}" alt="{{ item.title }}">
+      <p class="free-shipping-info text-center text-success">FREE SHIPPING</p>
+    </div>
+
+    <div class="col-lg boxy container py-5">
+
+      <form class="col-md-12 pt-5 d-flex justify-content-between align-items-center" method="post"
+        action="{% url 'core_app:discovery' %}">
+        {% csrf_token %}
+        <input type="hidden" name="product" value="{{ item.id }}">
+
+        <div class="h4">
+          <label for="quantity" class="form-label">Quantity</label>
+
+          <input type="number" id="quantity" class="form-control d-flex align-items-center quantity-selector"
+            aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10"
+            step="1" data-bs-round="0" aria-label="Quantity selector">
+        </div>
+
+        <div class="pt-3">
+          <button class="btn btn-outline-success btn-lg px-5" type="submit">
+            + Add to cart
+          </button>
+        </div>
+
+      </form>
+
+
+      <div class="mt-5 col-12 bg-light p-3 border rounded roboto-font fw-normal">
+        <p><strong>Description:</strong> {{ item.description }}</p>
+        <p><strong>Burning Time:</strong> {{ item.burn_time }} </p>
+        <p><strong>Material:</strong> {{ item.material }}</p>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

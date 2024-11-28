@@ -1,0 +1,13 @@
+/***Detail Page***/
+#detail-content {
+    margin-top: 70px !important;
+    height: 600px;
+    margin-bottom: 80px;
+    display: block;
+}
+
+
+#quantity input {
+    font-weight: bold;
+    font-size: 14px;
+}
