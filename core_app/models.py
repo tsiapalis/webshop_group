@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -29,3 +30,16 @@ class Candle(Item):
 
     def __str__(self):
         return self.title
+
+class Review(models.Model):
+    RATING_CHOICES = {
+        "1" : "Not Great",
+        "2" : "Could Be Better",
+        "3" : "Good",
+        "4" : "Really Good",
+        "5" : "Amazing"
+        }
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField(blank=True)
+    rating = models.PositiveIntegerField(choices=RATING_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
