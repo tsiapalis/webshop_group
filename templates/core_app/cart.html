@@ -4,9 +4,50 @@
 {% block body_block %}
 <div class="base-container container mt-100 mt-60 p-5">
     <div class="row">
-        <div class="col-12 text-center">
-            <div class="section-title mb-4 pb-2">
-                <h4 class="title mb-4 roboto-font">Cart</h4>
+        <section class="cart">
+            <h1>Your cart items</h1>
+            <span class="vart_view">
+                <a href="#" class="back-to-shopping"><span style="text-align: center;">Back to shopping</span></a>
+            </span>
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="product-info">
+                            <img src="{% static 'img/candles_4.jpg' %}" alt="Example Image">
+                            <div>
+                                <p>Spiced Mint Candleleaf®</p>
+                                <a href="#" class="remove">Remove</a>
+                            </div>
+                        </td>
+                        <td>$9.99</td>
+                        <td>
+                            <input type="number" value="1" min="1" style="width: 40px;">
+                        </td>
+                        <td>$9.99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <div style="width: 50%; display: block; position: relative; float: left;">
+
+                </div>
+                <div style="width: 50%; display: block; position: relative; float: right;">
+                    <p class="cart_total">Sub-total: <span class="cart_price">$9.99</span></p>
+                    <p>Tax and shipping cost will be calculated later</p>
+                    <button class="checkout-btn">Check-out</button>
+                </div>
+
+            </div>
+        </section>
     </div>
 
     <div class="row">
