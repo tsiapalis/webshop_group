@@ -13,7 +13,7 @@ urlpatterns = [
     path('logout/success/', auth_views.logout_success, name='logout_success'),
     path('submit_review/', views.submit_review, name='submit_review'),
     path('about/', views.about, name='about'),
-    path('detaileditems/', views.detaileditems, name='detaileditems'),
+    path('item/<int:item_id>', Discovery.as_view(), name='detailed_item'),
     path('registration/', auth_views.RegisterView.as_view(), name='registration'),
     path('reset-password/', auth_views.ResetPasswordView.as_view(), name='reset_password'),
 ]
