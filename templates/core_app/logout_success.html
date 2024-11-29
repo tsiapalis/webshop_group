@@ -1,51 +1,50 @@
 {% extends "core_app/base.html" %}
 
 {% block body_block %}
-<div class="container">
-    <h1>Before you log out!</h1>
-    <p>Thank you for using our platform, {{ user }}. We value your feedback!</p>
+    <div class="container">
+        <h1>Before you log out!</h1>
+        <p>Thank you for using our platform, {{ user }}. We value your feedback!</p>
 
-    <h5>Would you like to leave a review? (Optional)</h5>
-    <form method="POST" action="{% url 'core_app:submit_review' %}">
-        {% csrf_token %}
+        <h5>Would you like to leave a review? (Optional)</h5>
+        <form method="POST" action="{% url 'core_app:review' %}">
+            {% csrf_token %}
+            
+            <div>
+                <label for="review-textarea">Leave your review here:</label><br>
+                <textarea name="review" id="review-textarea" rows="4" cols="50" placeholder="Share your thoughts..."></textarea>
+            </div><br>
 
-        <div>
-            <label for="review-textarea">Leave your review here:</label><br>
-            <textarea name="review" id="review-textarea" rows="4" cols="50"
-                placeholder="Share your thoughts..."></textarea>
-        </div><br>
+            <div>
+                <label>Rate your experience:</label><br>
+                <!-- Emoji rating buttons -->
+                <label>
+                    <input type="radio" name="rating" value="1" required>
+                    😞 Not Great
+                </label><br>
+                <label>
+                    <input type="radio" name="rating" value="2">
+                    😒 Could Be Better
+                </label><br>
+                <label>
+                    <input type="radio" name="rating" value="3">
+                    🙂 Good
+                </label><br>
+                <label>
+                    <input type="radio" name="rating" value="4">
+                    😊 Really Good
+                </label><br>
+                <label>
+                    <input type="radio" name="rating" value="5">
+                    🤩 Amazing
+                </label><br>
+            </div><br>
 
-        <div>
-            <label>Rate your experience:</label><br>
-            <!-- Emoji rating buttons -->
-            <label>
-                <input type="radio" name="rating" value="1" required>
-                😞 Not Great
-            </label><br>
-            <label>
-                <input type="radio" name="rating" value="2">
-                😒 Could Be Better
-            </label><br>
-            <label>
-                <input type="radio" name="rating" value="3">
-                🙂 Good
-            </label><br>
-            <label>
-                <input type="radio" name="rating" value="4">
-                😊 Really Good
-            </label><br>
-            <label>
-                <input type="radio" name="rating" value="5">
-                🤩 Amazing
-            </label><br>
-        </div><br>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+                <a href="{% url 'core_app:logout_view' %}" class="btn btn-secondary" role="button">No, thanks...</a>
+            </div>
+        </form>
 
-        <div style="display: flex; gap: 10px;">
-            <button type="submit" class="btn btn-primary">Submit Review</button>
-            <a href="{% url 'core_app:index' %}" class="btn btn-secondary" role="button">No, thanks...</a>
-        </div>
-    </form>
-
-    <p><a href="{% url 'core_app:login' %}">Login again</a></p>
-</div>
+        <p><a href="{% url 'core_app:login' %}">Login again</a></p>
+    </div>
 {% endblock %}
