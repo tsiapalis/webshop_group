@@ -9,6 +9,14 @@ django.setup()
 from core_app.models import Candle
 
 JSON_FILE_PATH = "candles_data.json"
+DEFAULT_IMAGE_PATH = "candle_images/Stearin candle Polka countdown.jpg"
+
+def validate_image_path(image_path):
+    """Validates that the given image path exists."""
+    if image_path and os.path.isfile(image_path):
+        return image_path
+    print(f"Warning: Image file not found for path '{image_path}'. Using placeholder image.")
+    return DEFAULT_IMAGE_PATH
 
 def populateData(candles_data):
     for candle_data in candles_data:
@@ -22,6 +30,7 @@ def populateData(candles_data):
         category = category_mapping.get(candle_data["category"], "TA")
         created_at = candle_data.get("created_at") or datetime.now()
         updated_at = candle_data.get("updated_at") or datetime.now()
+        image_path = validate_image_path(candle_data.get("image"))
 
         # Create or update a Candle instance
         candle = Candle(
@@ -34,7 +43,7 @@ def populateData(candles_data):
             created_at=candle_data["created_at"],
             updated_at=candle_data["updated_at"],
             category=category,
-            image=candle_data["image"] if candle_data["image"] else None,
+            image=image_path,
         )
 
         candle.save()
