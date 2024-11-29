@@ -9,3 +9,7 @@ python -m venv env (env or whatever name you prefer)
 env\Scripts\activate (windows)
 
 pip install -r requirements.txt
+
+Run
+python populate_script/populate_data.py
+to populate the database with candles
