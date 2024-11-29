@@ -18,7 +18,7 @@ JSON_FILE_PATH = "populate_script/candles_data.json"
 DEFAULT_IMAGE_PATH = "populate_script/candle_images/Stearin candle Polka countdown.jpg"
 
 def validate_image_path(image_path):
-    if image_path and os.path.isfile('populate_script/' + image_path):
+    if image_path and os.path.isfile(image_path):
         return image_path
     print(f"Warning: Image file not found for path '{image_path}'. Using placeholder image.")
     return DEFAULT_IMAGE_PATH
