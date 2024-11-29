@@ -1,9 +1,7 @@
-from django.shortcuts import render, redirect, reverse
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Candle, Review
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
 from .forms import RegistrationForm, ResetPasswordForm
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -54,7 +52,4 @@ class ResetPasswordView(View):
 @login_required
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/logout/success')
-
-def logout_success(request):
-    return render(request, 'core_app/logout_success.html', {'user' : request.user})
+    return HttpResponseRedirect('/')
