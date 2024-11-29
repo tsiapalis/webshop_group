@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <div class="section-title mb-4 pb-2">
-                <h4 class="title mb-4 roboto-font">Products</h4>
+                <h4 class="title mb-4 roboto-font">Productsssssss</h4>
                 <p class="text-muted para-desc mx-auto mb-0 roboto-font">Find the items your looking for.</p>
             </div>
         </div>
@@ -17,7 +17,7 @@
         <div class="col-md-6 mx-auto">
             {{ categories }}
             <label for="category" class="form-label roboto-font">Choose Category:</label>
-            
+
             <select name="category" id="category" class="form-select">
                 <option value="">All Categories</option>
                 <option value="SC">Scented</option>
@@ -26,10 +26,10 @@
                 <option value="TW">Twisted</option>
                 <option value="TA">Taper</option>
                 {% for key, label in categories %}
-                    <option value="{{ key }}" {% if key == selected_category %}selected{% endif %}>
-                        {{ label }}
-                    </option>
-                
+                <option value="{{ key }}" {% if key==selected_category %}selected{% endif %}>
+                    {{ label }}
+                </option>
+
                 {% endfor %}
             </select>
         </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        
+
         {% empty %}
         <p class="text-center text-muted roboto-font">No items found for the selected category.</p>
         {% endfor %}
