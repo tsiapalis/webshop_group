@@ -6,7 +6,7 @@
         <p>Thank you for using our platform, {{ user }}. We value your feedback!</p>
 
         <h5>Would you like to leave a review? (Optional)</h5>
-        <form method="POST" action="{% url 'core_app:submit_review' %}">
+        <form method="POST" action="{% url 'core_app:review' %}">
             {% csrf_token %}
             
             <div>
@@ -41,7 +41,7 @@
 
             <div style="display: flex; gap: 10px;">
                 <button type="submit" class="btn btn-primary">Submit Review</button>
-                <a href="{% url 'core_app:logout_without_review' %}" class="btn btn-secondary" role="button">No, thanks...</a>
+                <a href="{% url 'core_app:logout_view' %}" class="btn btn-secondary" role="button">No, thanks...</a>
             </div>
         </form>
 

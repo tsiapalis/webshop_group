@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from . import auth_views
 from .discovery_view import Discovery
-from .review_view import Review
+from .review_view import ReviewView
 
 app_name = 'core_app'
 
@@ -11,7 +11,7 @@ urlpatterns = [
     path('discovery/', Discovery.as_view(), name='discovery'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.logout_view, name='logout'),
-    path('review/', Review.as_view(), name='review'),
+    path('review/', ReviewView.as_view(), name='review'),
     path('about/', views.about, name='about'),
     path('item/<int:item_id>', Discovery.as_view(), name='detailed_item'),
     path('registration/', auth_views.RegisterView.as_view(), name='registration'),
