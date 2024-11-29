@@ -12,6 +12,23 @@
         </div>
     </div>
 
+    <form method="GET" action="{% url 'core_app:discovery' %}" class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <label for="category" class="form-label roboto-font">Choose Category:</label>
+            <select name="category" id="category" class="form-select">
+                <option value="">All Categories</option>
+                <option value="SC">Scented</option>
+                <option value="PI">Pillar</option>
+                <option value="DE">Decorative</option>
+                <option value="TW">Twisted</option>
+                <option value="TA">Taper</option>
+            </select>
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <button type="submit" class="btn btn-primary roboto-font">Filter</button>
+        </div>
+    </form>
+
     <div class="row">
         {% for item in items %}
         <div class="col-lg-4 col-md-6 mt-4 pt-2">
