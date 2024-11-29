@@ -36,12 +36,9 @@ def submit_review(request):
             )
             review_data.save()
 
-            logout(request)
             return redirect('core_app:index')
         else:
-            logout(request)
             return HttpResponse('Invalid submission.', status=400)
-    logout(request)
     return HttpResponse('Invalid request', status=400)
 
 def logout_without_review(request):
@@ -56,40 +53,3 @@ def index(request):
 
 def about(request):
     return render(request, 'core_app/about.html')
-
-def register(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('core_app:index')
-    else:
-        form = RegistrationForm()
-
-    return render(request, 'core_app/registration.html', {'form': form})
-
-
-def reset_password(request):
-    if request.method == "POST":
-        form = ResetPasswordForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            email = form.cleaned_data["email"]
-            new_password = form.cleaned_data["new_password"]
-
-            # Check if the user exists with the given username and email
-            try:
-                user = User.objects.get(username=username, email=email)
-                user.set_password(new_password)  
-                user.save()  
-                messages.success(request, "Password reset successfully!")
-                return redirect("core_app:login")  
-            except User.DoesNotExist:
-                messages.error(request, "No user found with the given username and email!")
-                return redirect("core_app:reset_password")
-    else:
-        form = ResetPasswordForm()
-
-    return render(request, "core_app/reset_password.html", {"form": form})
