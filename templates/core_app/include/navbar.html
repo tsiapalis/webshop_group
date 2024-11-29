@@ -19,7 +19,7 @@
                     person
                 </span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="dropdownMenuButton">
                 {% if user.is_authenticated %}
                 <li><a class="dropdown-item" href="{% url 'core_app:review' %}">Logout</a></li>
                 {% else %}
