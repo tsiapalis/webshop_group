@@ -9,7 +9,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Stearin candle Polka countdown.jpg"
     },
     {
         "title": "Rustic candles Ljuslila",
@@ -21,7 +21,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Rustic candles Ljuslila.avif"
     },
     {
         "title": "Antique candles Lackat light green",
@@ -33,7 +33,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Antique candles Lackat light green.avif"
     },
     {
         "title": "Rustic candle Rand pink/burgundy",
@@ -45,7 +45,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Rustic candle Rand.jpg"
     },
     {
         "title": "Candle Twisted grey",
@@ -57,7 +57,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Twisted",
-        "image": ""
+        "image": "populate_script/candle_images/Candle Twisted grey.avif"
     },
     {
         "title": "Antique candles Lackat fushia",
@@ -69,7 +69,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Antique candles Lackat fushia.avif"
     },
     {
         "title": "Antique candles Lackat light purple",
@@ -81,7 +81,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Tapper",
-        "image": ""
+        "image": "populate_script/candle_images/Antique candles Lackat light purple.avif"
     },
     {
         "title": "Candle Spöke white",
@@ -93,7 +93,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Decrotive",
-        "image": ""
+        "image": "populate_script/candle_images/Candle Spoke white.avif"
     },
     {
         "title": "Candle PUMPA",
@@ -105,7 +105,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Decrotive",
-        "image": ""
+        "image": "populate_script/candle_images/Candle PUMPA.avif"
     },
     {
         "title": "Pillar candle Cream",
@@ -117,7 +117,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Cream.avif"
     },
     {
         "title": "Pillar candle Block white",
@@ -129,7 +129,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Block white.avif"
     },
     {
         "title": "Pillar candle Red",
@@ -141,7 +141,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Red.jpg"
     },
     {
         "title": "Pillar candle Dark green",
@@ -153,7 +153,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Dark green.avif"
     },
     {
         "title": "Pillar candle Orange",
@@ -165,7 +165,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Orange.avif"
     },
     {
         "title": "Pillar candle Twisted light blue",
@@ -177,7 +177,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Twisted",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Twisted light blue.avif"
     },
     {
         "title": "Pillar candle Twisted dark green",
@@ -189,7 +189,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Twisted",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Twisted dark green.avif"
     },
     {
         "title": "Pillar candle Twisted Cream",
@@ -201,7 +201,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Twisted",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Twisted Cream.jpg"
     },
     {
         "title": "Pillar candle Black",
@@ -213,7 +213,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Pillar",
-        "image": ""
+        "image": "populate_script/candle_images/Pillar candle Black.avif"
     },
     {
         "title": "Tealights GINGER BREAD",
@@ -225,7 +225,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Decrotive",
-        "image": ""
+        "image": "populate_script/candle_images/Tealights GINGER BREAD.webp"
     },
     {
         "title": "Cake candles Heart",
@@ -237,7 +237,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Decrotive",
-        "image": ""
+        "image": "populate_script/candle_images/Cake candles Heart.jpg"
     },
     {
         "title": "Scented candle Ceder & wood fire taupe",
@@ -249,7 +249,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Scented",
-        "image": ""
+        "image": "populate_script/candle_images/Scented candle Ceder & wood fire taupe.avif"
     },
     {
         "title": "Scented candle Green grape & verbena",
@@ -261,7 +261,7 @@
         "created_at": "",
         "updated_at": "",
         "category": "Scented",
-        "image": ""
+        "image": "populate_script/candle_images/Scented candle Green grape & verbena.avif"
     },
     {
         "title": "Scented candle Ljusbeige sea salt & linen",
@@ -273,6 +273,6 @@
         "created_at": "",
         "updated_at": "",
         "category": "Scented",
-        "image": ""
+        "image": "populate_script/candle_images/Scented candle Ljusbeige sea salt & linen.jpg"
     }
 ]

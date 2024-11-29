@@ -14,8 +14,6 @@ class Discovery(View):
             items = Candle.objects.all()
             return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
 
-
-
     def post(self, request): 
         product_id  = request.POST.get('product')
         quantity_to_add  = int(request.POST.get('quantity'))
