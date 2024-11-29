@@ -21,9 +21,9 @@ class Candle(Item):
     CATEGORY_CHOICES = [
         ('SC', 'Scented'),
         ('PI', 'Pillar'),
-        ('DE', 'Decrotive'),
+        ('DE', 'Decorative'),
         ('TW', 'Twisted'),
-        ('TA', 'Tapper'),
+        ('TA', 'Taper'),
     ]
     category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
     image = models.ImageField(upload_to='candles/', blank=True, null=True)

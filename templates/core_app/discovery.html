@@ -1,0 +1,73 @@
+{% extends "core_app/base.html" %}
+{% load static %}
+
+{% block body_block %}
+<div class="container mt-100 mt-60 p-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="section-title mb-4 pb-2">
+                <h4 class="title mb-4 roboto-font">Products</h4>
+                <p class="text-muted para-desc mx-auto mb-0 roboto-font">Find the items your looking for.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Selection -->
+    <form method="GET" action="{% url 'core_app:discovery' %}" class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            {{ categories }}
+            <label for="category" class="form-label roboto-font">Choose Category:</label>
+            
+            <select name="category" id="category" class="form-select">
+                <option value="">All Categories</option>
+                <option value="SC">Scented</option>
+                <option value="PI">Pillar</option>
+                <option value="DE">Decorative</option>
+                <option value="TW">Twisted</option>
+                <option value="TA">Taper</option>
+                {% for key, label in categories %}
+                    <option value="{{ key }}" {% if key == selected_category %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <button type="submit" class="btn btn-primary roboto-font">Filter</button>
+        </div>
+    </form>
+
+    <div class="products-container row">
+        {% for item in items %}
+        <div class="col-lg-4 col-md-6 mt-4 pt-2">
+            <div class="item rounded border shadow-lg">
+                <div class="d-block overflow-hidden position-relative">
+                    <img class="img-fluid rounded-top" src="{{ item.image }}" alt="{{ item.title }}">
+                    <div class="overlay rounded-top bg-dark"></div>
+                </div>
+                <div class="content p-3">
+                    <h4 class="mt-2 roboto-font fs-4">{{ item.title }}</a></h4>
+                    <div class="d-flex justify-content-between">
+                        <p class="mt-2 text-success fs-5 roboto-font">{{ item.price }}</p>
+
+                        <form method="post" action="{% url 'core_app:discovery' %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="product" value="{{ item.id }}">
+                            <button class="btn" type="submit">
+                                <span class="material-symbols-outlined text-dark fs-1">
+                                    add_shopping_cart
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% empty %}
+        <p class="text-center text-muted roboto-font">No items found for the selected category.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -141,3 +141,5 @@ LOGOUT_REDIRECT_URL = '/logout/success/'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
 ]
+
+
