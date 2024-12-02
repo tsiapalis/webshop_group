@@ -12,19 +12,20 @@ class Discovery(View):
         else:
             category = request.GET.get('category', None)
             print(f"category: {category}")
-            if category:
-                items = Candle.objects.filter(category=category)
-            else:
-                items = Candle.objects.all()
 
             search_query = request.GET.get('search',None)
             print(f"search: {search_query}")
 
+            items = Candle.objects.all()
+
+            if category:
+                items = items.filter(category=category)
+
             if search_query:
-                items = Candle.objects.filter(Q(title__icontains=search_query) |
-                    Q(description__icontains=search_query))
+                items = items.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
 
-
+            
+        
         return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
 
     def post(self, request): 
