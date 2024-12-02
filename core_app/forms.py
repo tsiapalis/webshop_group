@@ -81,12 +81,12 @@ class ResetPasswordForm(forms.Form):
 
 
 class ChangeUserInfo(UserChangeForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
-    }))
-    password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
-    }))
+    # password = forms.CharField(widget=forms.PasswordInput(attrs={
+    #     'class': 'form-control',
+    # }))
+    # password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={
+    #     'class': 'form-control',
+    # }))
 
     class Meta:
         model = User
