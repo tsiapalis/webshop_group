@@ -1,0 +1,72 @@
+{% extends "core_app/base.html" %}
+{% load static %}
+{% load mathfilters %}
+
+{% block body_block %}
+<div class="container mt-100 mt-60 p-5">
+    <div class="row">
+        <section class="cart roboto-font">
+            <h1 class="fs-2 text-dark text-align-center">Your cart items</h1>
+            <span class="">
+                <a href="{% url 'core_app:discovery' %}" class="back-to-shopping"><span style="text-align: center;">Back
+                        to shopping</span></a>
+            </span>
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td class="product-info">
+                            <a href="{% url 'core_app:detailed_item' item.item.id %}" class="text-decoration-none">
+                                <img src="{{ item.item.image.url }}" alt="Example Image"
+                                    style="height: 140px; width:140px;">
+                            </a>
+                            <div class="align-self-center">
+                                <p class="stick-no-bills-font fs-3 h2 pb-2">{{ item.item.title }}</p>
+                                <form method="post" action="{% url 'core_app:cart' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="item_id" value="{{ item.item.id }}">
+                                    <input type="hidden" name="method" value="delete">
+                                    <button class="btn btn-outline-danger" type="submit">Remove</button>
+                                </form>
+                            </div>
+                        </td>
+
+                        <td>{{ item.item.price }}€</td>
+                        <td>
+                            <form method="post" action="{% url 'core_app:cart' %}" class="m-0">
+                                {% csrf_token %}
+                                <input type="hidden" name="item_id" value="{{ item.item.id }}">
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10"
+                                    style="width: 40px;" onchange="this.form.submit();">
+                            </form>
+                        </td>
+                        <td>{{ item.item.price |mul:item.quantity }}€</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pt-4 ms-auto text-end w-25">
+                <p class="fs-3 fw-bold" style="text-align:start;">
+                    Sub-total: <span class="fw-normal">{{ subTotal }}€</span>
+                </p>
+                <p style="text-align:start;">Tax and shipping cost will be calculated later</p>
+
+                <section class="d-flex justify-content-start">
+                    <button class="btn btn-outline-success fs-4 w-full text-center">
+                        Check-out
+                    </button>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
