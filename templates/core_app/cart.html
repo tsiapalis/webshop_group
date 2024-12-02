@@ -5,7 +5,7 @@
 {% block body_block %}
 <div class="container mt-100 mt-60 p-5">
     <div class="row">
-        <section class="cart">
+        <section class="cart roboto-font">
             <h1>Your cart items</h1>
             <span class="vart_view">
                 <a href="{% url 'core_app:discovery' %}" class="back-to-shopping"><span style="text-align: center;">Back
@@ -25,15 +25,17 @@
                     {% for item in items %}
                     <tr>
                         <td class="product-info">
-                            <img src="{{ item.item.image.url }}" alt="Example Image"
-                                style="height: 140px; width:140px;">
-                            <div>
-                                <p>{{ item.item.title }}</p>
+                            <a href="{% url 'core_app:detailed_item' item.item.id %}" class="text-decoration-none">
+                                <img src="{{ item.item.image.url }}" alt="Example Image"
+                                    style="height: 140px; width:140px;">
+                            </a>
+                            <div class="align-self-center">
+                                <p class="stick-no-bills-font fs-3 h2 pb-2">{{ item.item.title }}</p>
                                 <form method="post" action="{% url 'core_app:cart' %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="item_id" value="{{ item.item.id }}">
                                     <input type="hidden" name="method" value="delete">
-                                    <button class="remove" type="submit">Remove</button>
+                                    <button class="btn btn-outline-danger" type="submit">Remove</button>
                                 </form>
                             </div>
                         </td>
@@ -52,21 +54,14 @@
                 </tbody>
             </table>
             <div class="cart-summary">
-                <div style="width: 50%; display: block; position: relative; float: left;">
-
-                </div>
                 <div style="width: 50%; display: block; position: relative; float: right;">
-                    <p class="cart_total">Sub-total: <span class="cart_price">{{ "fix this with a loop" }}</span></p>
+                    <p class="cart_total">Sub-total: <span class="cart_price">{{ subTotal }}€</span></p>
                     <p>Tax and shipping cost will be calculated later</p>
                     <button class="checkout-btn">Check-out</button>
                 </div>
 
             </div>
         </section>
-    </div>
-
-    <div class="row">
-
     </div>
 </div>
 {% endblock %}

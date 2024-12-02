@@ -8,12 +8,14 @@ class CartView(View):
     def get(self, request):
         cart = request.session.get('cart', {})
 
+        subTotal = 0
         items = []
         for id, quantity in cart.items():
             item = get_object_or_404(Candle, id=id)
             items.append({'item': item, 'quantity': quantity})
-        print(items)
-        return render(request, 'core_app/cart.html', {'items': items, 'cart_count': sum(cart.values())})
+            subTotal += item.price * quantity
+
+        return render(request, 'core_app/cart.html', {'items': items, 'cart_count': sum(cart.values()), 'subTotal': subTotal})
     
     def post(self, request):
         method = self.request.POST.get('method', '').lower()
