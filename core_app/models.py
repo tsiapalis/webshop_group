@@ -54,7 +54,6 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} belongs to {self.user.username}"
 
-
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
@@ -62,3 +61,4 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.item.name} in Order {self.order.id}"
+
