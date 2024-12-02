@@ -13,20 +13,23 @@ class Discovery(View):
             category = request.GET.get('category', None)
             print(f"category: {category}")
 
-            search_query = request.GET.get('search',None)
+            search_query = request.GET.get('search', None)
             print(f"search: {search_query}")
 
+        items = []
+
+        if category and search_query:
+            items = Candle.objects.filter(Q(category=category) & (Q(title__icontains=search_query) | Q(description__icontains=search_query)))
+
+        elif category:
+            items = Candle.objects.filter(category=category)
+
+        elif search_query:
+            items = Candle.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
+        else:
             items = Candle.objects.all()
 
-            if category:
-                items = items.filter(category=category)
-
-            if search_query:
-                items = items.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query))
-
-            
-        
-        return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
+        return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items })
 
     def post(self, request): 
         product_id  = request.POST.get('product')
