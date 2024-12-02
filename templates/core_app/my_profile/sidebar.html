@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'core_app:details' %}">Personal Details</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core_app:transactions' %}">Transaction History</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core_app:billing' %}">Billing and Payments</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core_app:settings' %}">Settings</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'core_app:review' %}">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
