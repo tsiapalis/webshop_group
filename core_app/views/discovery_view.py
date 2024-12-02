@@ -1,20 +1,18 @@
 from django.views import View
-from .models import Candle
+from ..models import Candle
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
+
 class Discovery(View):
-    def get(self, request, item_id=None): # item_id=None,  category=None
+    def get(self, request, item_id=None):
         cart = request.session.get('cart', {})
         cart_count = sum(cart.values())
     
         if item_id:
             item = get_object_or_404(Candle, id=item_id)
-            print(cart)
-            print(item_id)
             quantity = cart.get(str(item_id))
-            print("quantity: ", quantity)
             return render(request, 'core_app/discovery/detailed_item.html', {'cart_count': cart_count, 'item': item, 'quantity': quantity})
         else:
             category = request.GET.get('category', None)
@@ -46,10 +44,18 @@ class Discovery(View):
 
         cart = request.session.get('cart', {})
 
+        item = get_object_or_404(Candle, id=item_id)
+
+        if item.in_stock < 0:
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
         if new_quantity == 0:
             cart.pop(item_id, None)
         else:
-            cart[item_id] = new_quantity
+            if new_quantity <= item.in_stock:
+                cart[item_id] = new_quantity
+            else:
+                cart[item_id] = item.in_stock
 
         request.session['cart'] = cart 
 

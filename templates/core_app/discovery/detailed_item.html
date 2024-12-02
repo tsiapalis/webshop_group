@@ -25,15 +25,21 @@
         </div>
 
         <div class="pt-3">
+          {% if item.in_stock > 0 %}
           <button class="btn btn-outline-success btn-lg px-5" type="submit">
             + Add to cart
           </button>
+          {% else %}
+          <button class="btn btn-outline-success btn-lg px-5" type="submit" disabled>
+            + Add to cart
+          </button>
+          {% endif %}
         </div>
-
       </form>
 
 
       <div class="mt-5 col-12 bg-light p-3 border rounded roboto-font fw-normal">
+        <p><strong>In Stock:</strong> {{ item.in_stock }}</p>
         <p><strong>Description:</strong> {{ item.description }}</p>
         <p><strong>Burning Time:</strong> {{ item.burn_time }} </p>
         <p><strong>Material:</strong> {{ item.material }}</p>
