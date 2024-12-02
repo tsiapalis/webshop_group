@@ -12,8 +12,21 @@ class CartView(View):
         items = []
         for id, quantity in cart.items():
             item = get_object_or_404(Candle, id=id)
+
+            if item.in_stock == 0:
+                # Skip items if out of stock
+                continue
+
+            if quantity > item.in_stock:
+                # Change quantity to match the available stock
+                quantity = item.in_stock
+                cart[id] = quantity
+
             items.append({'item': item, 'quantity': quantity})
             subTotal += item.price * quantity
+        
+        # Update the session cart with new quantity values
+        request.session['cart'] = cart
 
         return render(request, 'core_app/cart.html', {'items': items, 'cart_count': sum(cart.values()), 'subTotal': subTotal})
     
