@@ -37,13 +37,13 @@ class Discovery(View):
 
 class SearchView(View):
     def get(self, request):
-        search_query = request.GET.get('q', '')  # Capture search query
+        search_query = request.GET.get('q', '')  
         if search_query:
             items = Candle.objects.filter(
                 Q(title__icontains=search_query) | Q(description__icontains=search_query)
             )
         else:
-            items = Candle.objects.all()  # Show all items if no search query
+            items = Candle.objects.all()  
 
         cart = request.session.get('cart', {})
         cart_count = sum(cart.values())
@@ -54,5 +54,5 @@ class SearchView(View):
             'cart_count': cart_count,
             'items': items,
             'categories': categories,
-            'search_query': search_query,  # Pass the search query to the template
+            'search_query': search_query,  
         })
