@@ -6,8 +6,8 @@
 <div class="container mt-100 mt-60 p-5">
     <div class="row">
         <section class="cart roboto-font">
-            <h1>Your cart items</h1>
-            <span class="vart_view">
+            <h1 class="fs-2 text-dark text-align-center">Your cart items</h1>
+            <span class="">
                 <a href="{% url 'core_app:discovery' %}" class="back-to-shopping"><span style="text-align: center;">Back
                         to shopping</span></a>
             </span>
@@ -39,9 +39,10 @@
                                 </form>
                             </div>
                         </td>
+
                         <td>{{ item.item.price }}€</td>
                         <td>
-                            <form method="post" action="{% url 'core_app:cart' %}">
+                            <form method="post" action="{% url 'core_app:cart' %}" class="m-0">
                                 {% csrf_token %}
                                 <input type="hidden" name="item_id" value="{{ item.item.id }}">
                                 <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="10"
@@ -53,13 +54,17 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div class="cart-summary">
-                <div style="width: 50%; display: block; position: relative; float: right;">
-                    <p class="cart_total">Sub-total: <span class="cart_price">{{ subTotal }}€</span></p>
-                    <p>Tax and shipping cost will be calculated later</p>
-                    <button class="checkout-btn">Check-out</button>
-                </div>
+            <div class="pt-4 ms-auto text-end w-25">
+                <p class="fs-3 fw-bold" style="text-align:start;">
+                    Sub-total: <span class="fw-normal">{{ subTotal }}€</span>
+                </p>
+                <p style="text-align:start;">Tax and shipping cost will be calculated later</p>
 
+                <section class="d-flex justify-content-start">
+                    <button class="btn btn-outline-success fs-4 w-full text-center">
+                        Check-out
+                    </button>
+                </section>
             </div>
         </section>
     </div>
