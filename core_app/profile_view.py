@@ -30,4 +30,6 @@ class Settings(View):
 
 class TransactionsHistory(View):
     def get(self, request):
+        # orders = Order.objects.get(user=request.user)
+        # return render(request, 'core_app/my_profile/transactions.html', { 'orders' : orders })
         return render(request, 'core_app/my_profile/transactions.html')

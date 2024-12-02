@@ -45,20 +45,20 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-# class Order(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     list_of_Items = models.ManyToManyField(Item, through='OrderItem')
-#     total_cost = models.PositiveIntegerField()
-#     created_at = models.DateTimeField(auto_now_add=True)
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    list_of_Items = models.ManyToManyField(Item, through='OrderItem')
+    total_cost = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return f"Order {self.id} belongs to {self.user.username}"
+    def __str__(self):
+        return f"Order {self.id} belongs to {self.user.username}"
 
 
-# class OrderItem(models.Model):
-#     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-#     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-#     quantity = models.PositiveIntegerField(default=1)
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
 
-#     def __str__(self):
-#         return f"{self.quantity} x {self.item.name} in Order {self.order.id}"
+    def __str__(self):
+        return f"{self.quantity} x {self.item.name} in Order {self.order.id}"
