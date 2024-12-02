@@ -10,10 +10,22 @@ class Discovery(View):
             item = get_object_or_404(Candle, id=item_id)
             return render(request, 'core_app/discovery/detailed_item.html', {'item': item})
         else:
-            cart = request.session.get('cart', {})
-            cart_count = sum(cart.values())
-            items = Candle.objects.all()
-            return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
+            category = request.GET.get('category', None)
+            print(f"category: {category}")
+            if category:
+                items = Candle.objects.filter(category=category)
+            else:
+                items = Candle.objects.all()
+
+            search_query = request.GET.get('search',None)
+            print(f"search: {search_query}")
+
+            if search_query:
+                items = Candle.objects.filter(Q(title__icontains=search_query) |
+                    Q(description__icontains=search_query))
+
+
+        return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
 
     def post(self, request): 
         product_id  = request.POST.get('product')
@@ -35,24 +47,3 @@ class Discovery(View):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-class SearchView(View):
-    def get(self, request):
-        search_query = request.GET.get('q', '')  
-        if search_query:
-            items = Candle.objects.filter(
-                Q(title__icontains=search_query) | Q(description__icontains=search_query)
-            )
-        else:
-            items = Candle.objects.all()  
-
-        cart = request.session.get('cart', {})
-        cart_count = sum(cart.values())
-
-        categories = Candle.CATEGORY_CHOICES
-
-        return render(request, 'core_app/discovery/discovery.html', {
-            'cart_count': cart_count,
-            'items': items,
-            'categories': categories,
-            'search_query': search_query,  
-        })
