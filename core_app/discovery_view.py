@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 
 class Discovery(View):
-    def get(self, request, item_id=None): # item_id=None,  category=None
+    def get(self, request, item_id=None):
         cart = request.session.get('cart', {})
         cart_count = sum(cart.values())
     
