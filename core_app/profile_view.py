@@ -1,14 +1,21 @@
 from django.shortcuts import render, redirect
 from .forms import ChangeUserInfo
-from django.contrib.auth.models import User
+from django.contrib import messages
 from django.views import View
 
 
 
 class InfoChangeView(View):
     def get(self, request):
-        form = ChangeUserInfo()
-        return render(request, 'core_app/my_profile/personal_details.html', {'form': form}) 
+        return render(request, 'core_app/my_profile/personal_details.html', {'user': request.user})
+    
+    def post(self, request):
+        form = ChangeUserInfo(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your information has been updated.")
+            return redirect('core_app:details')
+        return render(request, 'core_app/my_profile/personal_details.html', {'user': request.user})
 
 
 class BillingPayments(View):
