@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from .models import Candle
+from ..models import Candle
 from django.http import HttpResponseRedirect
 
 class CartView(View):

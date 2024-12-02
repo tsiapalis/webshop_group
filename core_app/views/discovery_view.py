@@ -1,9 +1,8 @@
 from django.views import View
-from .models import Candle
+from ..models import Candle
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from django.contrib import messages
 
 
 class Discovery(View):
