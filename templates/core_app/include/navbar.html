@@ -21,6 +21,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                 {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'core_app:my_profile' %}">My Profile</a></li>
                 <li><a class="dropdown-item" href="{% url 'core_app:review' %}">Logout</a></li>
                 {% else %}
                 <li><a class="dropdown-item" href="{% url 'core_app:login' %}">Login</a></li>
