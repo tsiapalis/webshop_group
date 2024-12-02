@@ -3,12 +3,18 @@
 
 {% block body_block %}
 
-<div>
-    {% include 'core_app/my_profile/sidebar.html' %}
-</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-lg-2">
+            {% include 'core_app/my_profile/sidebar.html' %}
+        </div>
 
-<div class="card p-4 align-items-center roboto-font" style="width: 30rem;">
-    <h3 class="text-center">Dark Mode feature will arrive shortly.</h3>
+        <div class="col-md-9 col-lg-10 d-flex justify-content-center align-items-center">
+            <div class="card p-4 align-items-center roboto-font" style="width: 30rem;">
+                <h3 class="text-center">Dark Mode feature will be added soon.</h3>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
