@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import ChangeUserInfo
+from ..forms import ChangeUserInfo
 from django.contrib import messages
 from django.views import View
-from .models import Order, Item, OrderItem
+from ..models import Order, OrderItem
 
 
 
