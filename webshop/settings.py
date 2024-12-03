@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'sv-se'  # Set Swedish as the default language
 
 TIME_ZONE = 'UTC'
 
@@ -116,6 +116,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Add Swedish and English to available languages
+LANGUAGES = [
+    ('en', 'English'),
+    ('sv', 'Swedish'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
