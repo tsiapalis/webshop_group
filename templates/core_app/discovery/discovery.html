@@ -12,41 +12,41 @@
         </div>
     </div>
 
-    <!-- Search Bar -->
-    <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-end">
-            <form method="GET" action="{% url 'core_app:discovery' %}" class="d-flex align-items-center">
-                <input 
-                    type="text" 
-                    name="search" 
-                    class="form-control" 
-                    placeholder="Search products..." 
-                    value="{{ search_query }}" 
-                    style="max-width: 300px;"
-                >
-                <button type="submit" class="btn btn-primary ms-2">Search</button>
-            </form>
-        </div>
-    </div>
+    <form method="GET" action="{% url 'core_app:discovery' %}" class="row g-4">
 
-    <form method="GET" action="{% url 'core_app:discovery' %}" class="row mb-4">
-        <div class="col-md-6 mx-auto">
-            <label for="category" class="form-label roboto-font">Choose Category:</label>
-            <select name="category" id="category" class="form-select">
-                <option value="">All Categories</option>
-                <option value="SC">Scented</option>
-                <option value="PI">Pillar</option>
-                <option value="DE">Decorative</option>
-                <option value="TW">Twisted</option>
-                <option value="TA">Taper</option>
-            </select>
+        <div class="col-md-3">
+            <label for="category" class="form-label fw-bold roboto-font">Choose Category:</label>
+            <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
+                <select name="category" id="category" class="form-select">
+                    <option value="">All Categories</option>
+                    <option value="SC">Scented</option>
+                    <option value="PI">Pillar</option>
+                    <option value="DE">Decorative</option>
+                    <option value="TW">Twisted</option>
+                    <option value="TA">Taper</option>
+                </select>
+                <button class="btn btn-dark roboto-font" type="submit">
+                    <i class="bi bi-funnel"></i> Filter
+                </button>
+            </div>
         </div>
-        <div class="col-md-12 text-center mt-3">
-            <button type="submit" class="btn btn-primary roboto-font">Filter</button>
+
+        <div class="col-md-9">
+            <label for="search" class="form-label fw-bold roboto-font">Search Products:</label>
+            <div class="input-group">
+                <input type="text" name="search" id="search" class="form-control" placeholder="Search products..."
+                    value="{{ search_query }}">
+                <button type="submit" class="btn btn-dark">
+                    <span class="material-symbols-outlined filled text-light">
+                        search
+                    </span>
+                </button>
+            </div>
         </div>
     </form>
 
-    <div class="row">
+
+    <div class=" row">
         {% for item in items %}
         <div class="col-lg-4 col-md-6 mt-4 pt-2">
             <a href="{% url 'core_app:detailed_item' item.id %}" class="text-decoration-none text-dark">
