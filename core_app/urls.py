@@ -28,4 +28,5 @@ urlpatterns = [
     path('my-profile/transactions', TransactionsHistory.as_view(), name='transactions'),
     path('my-profile/billing', BillingPayments.as_view(), name='billing'),
     path('my-profile/settings', Settings.as_view(), name='settings'),
+    path('checkout/shipping', CheckoutView.as_view(), name='shipping'),
 ]

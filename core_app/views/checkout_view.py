@@ -25,6 +25,6 @@ class CheckoutView(View):
         
         # Update the session cart with new quantity values
         request.session['cart'] = cart
-    
+
         return render(request, 'core_app/checkout/details.html', {'items': items, 'subTotal': subTotal})
     
