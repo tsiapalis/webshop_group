@@ -18,12 +18,18 @@
             <label for="category" class="form-label fw-bold roboto-font">Choose Category:</label>
             <div class="d-flex flex-column flex-md-row align-items-md-center gap-3">
                 <select name="category" id="category" class="form-select">
-                    <option value="">All Categories</option>
-                    <option value="SC">Scented</option>
-                    <option value="PI">Pillar</option>
-                    <option value="DE">Decorative</option>
-                    <option value="TW">Twisted</option>
-                    <option value="TA">Taper</option>
+                    <option value="" {% if not curr_category %}selected{% endif %}>All Categories</option>
+                    {% for category in categories %}
+                    {% if curr_category and curr_category == category.0 %}
+                    <option value="{{ category.0 }}" selected>
+                        {{ category.1 }}
+                    </option>
+                    {% else %}
+                    <option value="{{ category.0 }}">
+                        {{ category.1 }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
                 </select>
                 <button class="btn btn-dark roboto-font" type="submit">
                     <i class="bi bi-funnel"></i> Filter
