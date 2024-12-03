@@ -1,88 +1,85 @@
-{% extends "core_app/checkout/checkout_base.html" %}
+{% extends "core_app/checkout/base.html" %}
 {% load static %}
 {% block body_block %}
 
 
-<div class="card p-4 align-items-center roboto-font" style="width: 36rem;">
+<div>
+  <ul class="steps">
+    <li class="completed">Cart</li>
+    <li>></li>
+    <li class="active">Details</li>
+    <li>></li>
+    <li class="upcoming">Shipping</li>
+    <li>></li>
+    <li class="upcoming">Payments</li>
+  </ul>
 
-  <div class="container mt-4">
+  <div class="section-heading">
+    <h5>Contact</h5>
+    <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
+  </div>
 
-    <ul class="steps">
-      <li class="completed">Cart</li>
-      <li class="active">Details</li>
-      <li class="upcoming">Shipping</li>
-      <li class="upcoming">Payments</li>
-    </ul>
+  <div class="mb-3">
+    <input type="email" class="form-control" placeholder="Email or Phone Number">
+  </div>
+  <div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" id="newsletter">
+    <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
+  </div>
 
+  <div class="section-heading">
+    <h5>Shipping Address</h5>
+  </div>
 
-    <div class="section-heading">
-      <h5>Contact</h5>
-      <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
+  <div class="row mb-3">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First Name">
     </div>
-
-    <div class="mb-3">
-      <input type="email" class="form-control" placeholder="Email or Phone Number">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last Name">
     </div>
-    <div class="form-check mb-4">
-      <input class="form-check-input" type="checkbox" id="newsletter">
-      <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
+  </div>
+
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Address and Number">
+  </div>
+
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Shipping Note (Optional)">
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="City">
     </div>
-
-    <div class="section-heading">
-      <h5>Shipping Address</h5>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Postal Code">
     </div>
-
-    <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First Name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last Name">
-        </div>
-      </div>
-
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Address and Number">
-    </div>
-
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Shipping Note (Optional)">
-    </div>
-
-    <div class="row mb-3">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="City">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Postal Code">
-      </div>
-      <div class="col">
-        <select class="form-select">
-          <option selected>Province</option>
-          <option>Province 1</option>
-          <option>Province 2</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="mb-3">
+    <div class="col">
       <select class="form-select">
-        <option selected>Country</option>
-        <option>Country 1</option>
-        <option>Country 2</option>
+        <option selected>Province</option>
+        <option>Province 1</option>
+        <option>Province 2</option>
       </select>
     </div>
+  </div>
 
-    <div class="form-check mb-4">
-      <input class="form-check-input" type="checkbox" id="save-info">
-      <label class="form-check-label" for="save-info">Save this information.</label>
-    </div>
+  <div class="mb-3">
+    <select class="form-select">
+      <option selected>Country</option>
+      <option>Country 1</option>
+      <option>Country 2</option>
+    </select>
+  </div>
 
-    <div class="btn-custom">
-      <a href="#" class="btn-outline-secondary">Back to Cart</a>
-      <button class="btn btn-primary">Go to Shipping</button>
-    </div>
-    
+  <div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" id="save-info">
+    <label class="form-check-label" for="save-info">Save this information.</label>
+  </div>
+
+  <div class="btn-custom">
+    <a href="#" class="btn-outline-secondary">Back to Cart</a>
+    <button class="btn btn-primary">Go to Shipping</button>
   </div>
 </div>
 
