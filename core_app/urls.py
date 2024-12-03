@@ -5,7 +5,9 @@ from .views.auth_views import LoginView, RegisterView, ResetPasswordView, logout
 from .views.discovery_view import Discovery
 from .views.review_view import ReviewView
 from .views.cart_view import CartView
+from .views.checkout_view import CheckoutView
 from .views.profile_view import InfoChangeView, BillingPayments, Settings, TransactionsHistory
+
 
 app_name = 'core_app'
 
@@ -20,6 +22,7 @@ urlpatterns = [
     path('item/<int:item_id>', Discovery.as_view(), name='detailed_item'),
     path('registration/', RegisterView.as_view(), name='registration'),
     path('reset-password/', ResetPasswordView.as_view(), name='reset_password'),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('my-profile/', InfoChangeView.as_view(), name='my_profile'),
     path('my-profile/details', InfoChangeView.as_view(), name='details'),
     path('my-profile/transactions', TransactionsHistory.as_view(), name='transactions'),
