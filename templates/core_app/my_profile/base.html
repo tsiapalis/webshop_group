@@ -1,0 +1,17 @@
+{% extends "core_app/base.html" %}
+
+
+{% block body_block %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+            {% include 'core_app/my_profile/include/sidebar.html' %}
+        </div>
+
+        {% block profile_body_block %}
+        {% endblock %}
+    </div>
+</div>
+
+
+{% endblock body_block %}
