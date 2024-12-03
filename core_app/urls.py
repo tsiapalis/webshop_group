@@ -16,11 +16,17 @@ urlpatterns = [
     path('discovery/', Discovery.as_view(), name='discovery'),
     path('item/<int:item_id>', Discovery.as_view(), name='detailed_item'),
     path('cart/', CartView.as_view(), name='cart'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', logout_view, name='logout'),
     # Auth Views
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', logout_view, name='logout'),
     path('review/', ReviewView.as_view(), name='review'),
     path('about/', views.about, name='about'),
+    path('item/<int:item_id>', Discovery.as_view(), name='detailed_item'),
+    path('registration/', RegisterView.as_view(), name='registration'),
+    path('reset-password/', ResetPasswordView.as_view(), name='reset_password'),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('registration/', RegisterView.as_view(), name='registration'),
     path('reset-password/', ResetPasswordView.as_view(), name='reset_password'),
     # Settings Views
