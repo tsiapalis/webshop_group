@@ -1,29 +1,29 @@
 {% extends "core_app/my_profile/base.html" %}
 
 {% block profile_body_block %}
-<div class="col-md-10 col-lg-10 d-flex justify-content-center align-items-center">
-    <div class="p-4 align-items-center roboto-font" style="width: 30rem;">
-        <h3 class="text-center">Change your info here.</h3>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
-            </div>
-            <div class="mb-3">
-                <label for="first_name" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
-            </div>
-            <div class="mb-3">
-                <label for="last_name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Update</button>
-        </form>
-    </div>
+
+<div class="px-5 py-4 align-items-center roboto-font">
+    <h3 class="text-center">Change your info here.</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+        </div>
+        <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+        </div>
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Update</button>
+    </form>
 </div>
+
 {% endblock %}
