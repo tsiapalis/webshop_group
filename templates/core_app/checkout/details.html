@@ -19,68 +19,71 @@
     <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
   </div>
 
-  <div class="mb-3">
-    <input type="email" class="form-control" placeholder="Email or Phone Number">
-  </div>
-  <div class="form-check mb-4">
-    <input class="form-check-input" type="checkbox" id="newsletter">
-    <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
-  </div>
-
-  <div class="section-heading">
-    <h5>Shipping Address</h5>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="First Name">
+  <form method="post" action="{% url 'core_app:checkout_details' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input type="email" type="email" class="form-control" placeholder="Email or Phone Number">
     </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Last Name">
+    <div class="form-check mb-4">
+      <input class="form-check-input" name="newsletter" type="checkbox" id="newsletter">
+      <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
     </div>
-  </div>
 
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Address and Number">
-  </div>
-
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Shipping Note (Optional)">
-  </div>
-
-  <div class="row mb-3">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="City">
+    <div class="section-heading">
+      <h5>Shipping Address</h5>
     </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Postal Code">
+
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name">
+      </div>
+      <div class="col">
+        <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+      </div>
     </div>
-    <div class="col">
-      <select class="form-select">
-        <option selected>Province</option>
-        <option>Province 1</option>
-        <option>Province 2</option>
+
+    <div class="mb-3">
+      <input type="text" name="address" class="form-control" placeholder="Address and Number">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="shipping_note" class="form-control" placeholder="Shipping Note (Optional)">
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" name="city" class="form-control" placeholder="City">
+      </div>
+      <div class="col">
+        <input type="text" name="postal_code" class="form-control" placeholder="Postal Code">
+      </div>
+      <div class="col">
+        <select class="form-select" name="province">
+          <option selected>Province</option>
+          <option>Province 1</option>
+          <option>Province 2</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <select class="form-select" name="country">
+        <option selected>Country</option>
+        <option>Country 1</option>
+        <option>Country 2</option>
       </select>
     </div>
-  </div>
 
-  <div class="mb-3">
-    <select class="form-select">
-      <option selected>Country</option>
-      <option>Country 1</option>
-      <option>Country 2</option>
-    </select>
-  </div>
+    <div class="form-check mb-4">
+      <input class="form-check-input" name="save_info" type="checkbox" id="save-info">
+      <label class="form-check-label" for="save-info">Save this information.</label>
+    </div>
 
-  <div class="form-check mb-4">
-    <input class="form-check-input" type="checkbox" id="save-info">
-    <label class="form-check-label" for="save-info">Save this information.</label>
-  </div>
-
-  <div class="btn-custom">
-    <a href="#" class="btn-outline-secondary">Back to Cart</a>
-    <button class="btn btn-primary">Go to Shipping</button>
-  </div>
+    <div class="btn-custom">
+      <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
+      <button type="submit" class="btn btn-primary">Go to Shipping</button>
+    </div>
+  </form>
 </div>
 
 {% endblock %}
