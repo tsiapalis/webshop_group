@@ -47,12 +47,11 @@ class Review(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    list_of_items = models.ManyToManyField(Item, through='OrderItem')
-    total_cost = models.PositiveIntegerField(blank=True)
+    item = models.ManyToManyField(Item, through='OrderItem')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order {self.id} belongs to {self.user.username}. {self.list_of_items}"
+        return f"Order {self.id} belongs to {self.user.username}."
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

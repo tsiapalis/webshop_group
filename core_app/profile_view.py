@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import ChangeUserInfo
 from django.contrib import messages
 from django.views import View
-from .models import Order, Item
+from .models import Order, Item, OrderItem
 
 
 
@@ -31,13 +31,17 @@ class Settings(View):
 
 class TransactionsHistory(View):
     def get(self, request):
-        return render(request, 'core_app/my_profile/transactions.html')
-    
-    def post(self, request):
-        data = request.POST
-        print(data)
-        # if form.is_valid():
-        #     form.save()
-        #     messages.success(request, "Your information has been updated.")
-        #     return redirect('core_app:details')
-        return render(request, 'core_app/my_profile/personal_details.html', {'user': request.user})
+
+        orders = [order for order in Order.objects.all() if order.user.username == request.user.username]
+
+        details = {}
+        for detail in OrderItem.objects.all():
+            if detail.order in orders:
+                details[detail.item] = detail.quantity
+        for detail in details:
+            print(detail, details[detail])
+
+        return render(request, 'core_app/my_profile/transactions.html', {
+            'details' : details,
+            "order_length" : len(details)
+            })

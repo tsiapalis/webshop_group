@@ -11,7 +11,27 @@
 
         <div class="col-md-9 col-lg-10 d-flex justify-content-center align-items-center">
             <div class="card p-4 align-items-center roboto-font" style="width: 30rem;">
-                <h3 class="text-center">You have no transactions yet.</h3>
+                
+                {% if order_length > 0 %}
+                
+                    <h3 class="text-center">Hey {{ user.username }}. Your transaction history.</h3>
+                    <table>
+                        {% for k,v in details.items %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ v }} x {{ k }}</td>
+                                </tr>
+                            </tbody> 
+                        {% endfor %}
+                    </table>
+
+                {% else %}
+                    
+                    <h3 class="text-center">Hey {{ user.username }}. Your transaction history is empty.</h3>
+                    
+                {% endif %}
+                
+
             </div>
         </div>
     </div>
