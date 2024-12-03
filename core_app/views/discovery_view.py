@@ -14,9 +14,9 @@ class Discovery(View):
             item = get_object_or_404(Candle, id=item_id)
             quantity = cart.get(str(item_id))
             return render(request, 'core_app/discovery/detailed_item.html', {'cart_count': cart_count, 'item': item, 'quantity': quantity})
-        else:
-            category = request.GET.get('category', None)
-            search_query = request.GET.get('search',None)
+        
+        category = request.GET.get('category', None)
+        search_query = request.GET.get('search',None)
 
         items = []
         if category and search_query:
@@ -32,7 +32,7 @@ class Discovery(View):
         else:
             items = Candle.objects.all()
         
-        return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items})
+        return render(request, 'core_app/discovery/discovery.html', {'cart_count': cart_count, 'items': items, 'curr_category': category, 'categories': Candle.CATEGORY_CHOICES})
 
 
     def post(self, request): 
