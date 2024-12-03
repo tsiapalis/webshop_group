@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from ..forms import ChangeUserInfo
 from django.contrib import messages
 from django.views import View
-from ..models import Order, OrderItem
-
+from ..models import OrderItem
 
 
 class InfoChangeView(View):
@@ -31,17 +30,9 @@ class Settings(View):
 
 class TransactionsHistory(View):
     def get(self, request):
-
-        orders = [order for order in Order.objects.all() if order.user.username == request.user.username]
-
-        details = {}
-        for detail in OrderItem.objects.all():
-            if detail.order in orders:
-                details[detail.item] = detail.quantity
-        for detail in details:
-            print(detail, details[detail])
+        order_items = OrderItem.objects.filter(order__user=request.user)
 
         return render(request, 'core_app/my_profile/transactions.html', {
-            'details' : details,
-            "order_length" : len(details)
+            'details' : order_items,
+            "order_length" : len(order_items)
             })
