@@ -1,0 +1,39 @@
+.steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.steps li {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.steps li.completed {
+    color: green;
+}
+
+.steps li.active {
+    color: black;
+}
+
+.steps li.upcoming {
+    color: grey;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-custom {
+    display: flex;
+    justify-content: space-between;
+}

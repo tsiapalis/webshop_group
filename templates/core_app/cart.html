@@ -61,9 +61,11 @@
                 <p style="text-align:start;">Tax and shipping cost will be calculated later</p>
 
                 <section class="d-flex justify-content-start">
-                    <button class="btn btn-outline-success fs-4 w-full text-center">
-                        Check-out
-                    </button>
+                    <a href="{% url 'core_app:checkout' %}">
+                        <button class="btn btn-outline-success fs-4 w-full text-center">
+                            Check-out
+                        </button>
+                    </a>
                 </section>
             </div>
         </section>
