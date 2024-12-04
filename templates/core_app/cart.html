@@ -4,6 +4,9 @@
 
 {% block body_block %}
 <div class="container mt-100 mt-60 p-5">
+    {% for msg in messages %}
+    <p>{{ msg }}</p>
+    {% endfor %}
     <div class="row">
         <section class="cart roboto-font">
             <h1 class="fs-2 text-dark text-align-center">Your cart items</h1>
