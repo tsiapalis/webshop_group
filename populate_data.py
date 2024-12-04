@@ -14,6 +14,8 @@ django.setup()
 
 from core_app.models import Candle
 
+
+# Updated the path to match json
 JSON_FILE_PATH = "populate_script/candles_data.json"
 DEFAULT_IMAGE_PATH = "populate_script/candle_images/Stearin candle Polka countdown.jpg"
 
