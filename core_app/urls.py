@@ -33,5 +33,5 @@ urlpatterns = [
     path('checkout/details', DetailsView.as_view(), name='checkout_details'),
     path('checkout/shipping', ShippingView.as_view(), name='checkout_shipping'),
     path('checkout/payment', PaymentView.as_view(), name='checkout_payment'),
-    path('checkout/payment/confirmation/<int:order_number>/', PaymentConfirmedView.as_view(), name='payment_confirmed'),
+    path('checkout/payment/confirmation/<int:order_id>/', PaymentConfirmedView.as_view(), name='payment_confirmed'),
 ]

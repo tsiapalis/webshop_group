@@ -160,10 +160,10 @@ class PaymentView(View):
                 quantity=item['quantity']
             )
 
-        return HttpResponseRedirect(reverse('core_app:payment_confirmed'))
+        return HttpResponseRedirect(reverse('core_app:payment_confirmed', args=[order.id]))
 
 class PaymentConfirmedView(View):
-    def get(self, request):
+    def get(self, request, order_id=None):
         items, subTotal = CheckoutUtils.process_cart(request)
 
         if items is None:
@@ -175,4 +175,4 @@ class PaymentConfirmedView(View):
         total = subTotal + shipping_cost
         request.session['cart'] = {}
         request.session['checkout'] = {}
-        return render(request, 'core_app/checkout/payment_confirmed.html', {'items': items, 'subTotal': subTotal, 'shipping': 'Free Shipping', 'paid': total})
+        return render(request, 'core_app/checkout/payment_confirmation.html', {'items': items, 'subTotal': subTotal, 'shipping': 'Free Shipping', 'paid': total, 'order_id': order_id})
