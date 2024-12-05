@@ -1,0 +1,88 @@
+{% extends "core_app/checkout/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="container mt-5">
+    <!-- Steps Navigation -->
+    <ul class="steps mb-4">
+        <li class="completed">Cart</li>
+        <li>></li>
+        <li class="active">Details</li>
+        <li>></li>
+        <li class="upcoming">Shipping</li>
+        <li>></li>
+        <li class="upcoming">Payments</li>
+    </ul>
+
+    <div class="row">
+        <!-- Left side: Payment details -->
+        <div class="col-md-12">
+            <div class="card shadow-sm p-4 mx-auto">
+                <h2 class="mb-3">Payment</h2>
+                <div class="mb-3">
+                    <!-- Displaying the Contact Information from Session -->
+                    <p><strong>Contact:</strong> {{ checkout.details.email }} <a href="#" class="text-primary">Edit</a></p>
+                    <!-- <p><strong>Ship To:</strong> {{ checkout.shipping.ship_to }} <a href="#" class="text-primary">Edit</a></p>
+                    <p><strong>Method:</strong> {{ checkout.shipping.delivery_method }} - ${{ checkout.shipping.shipping_cost }} <a href="#" class="text-primary">Edit</a></p> -->
+                </div>
+
+                <h3 class="mt-4">Payment Method</h3>
+                <form method="POST" action="{% url 'core_app:checkout_payment' %}">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" class="form-control" id="card-number" placeholder="Card Number">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="holder-name">Holder Name</label>
+                        <input type="text" class="form-control" id="holder-name" placeholder="Holder Name">
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <label for="expiration">Expiration (MM/YY)</label>
+                            <input type="text" class="form-control" id="expiration" placeholder="MM/YY">
+                        </div>
+                        <div class="col">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                        </div>
+                    </div>
+
+                    <h3 class="mt-4">Tax Information</h3>
+                    <div class="form-group">
+                        <label for="vat-number">VAT Number (Optional)</label>
+                        <input type="text" class="form-control" id="vat-number" placeholder="VAT Number">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="pec">PEC (Optional)</label>
+                        <input type="text" class="form-control" id="pec" placeholder="PEC">
+                    </div>
+
+                    <h3 class="mt-4">Billing Address</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="billingAddress" id="sameAsShipping" checked>
+                        <label class="form-check-label" for="sameAsShipping">
+                            Same as the shipping address
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="billingAddress" id="differentAddress">
+                        <label class="form-check-label" for="differentAddress">
+                            Use a different address for billing
+                        </label>
+                    </div>
+
+                    <div class="btn-custom">
+                        <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
+                        <button type="submit" class="btn btn-primary">Pay Now</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+{% endblock %}
