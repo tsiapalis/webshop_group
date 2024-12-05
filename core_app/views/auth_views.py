@@ -19,8 +19,10 @@ class RegisterView(View):
 
     def post(self, request):
         form = RegistrationForm(request.POST)
+        print(form)
         if form.is_valid():
             user = form.save(commit=False)
+            print(user)
             user.set_password(form.cleaned_data['password'])
             user.save()
             return redirect('core_app:login')

@@ -9,7 +9,7 @@
 .steps li {
     flex: 1;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     font-weight: bold;
 }
 

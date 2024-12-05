@@ -1,30 +1,31 @@
-{% extends "core_app/checkout/checkout_base.html" %}
+{% extends "core_app/checkout/base.html" %}
 {% load static %}
 {% block body_block %}
 
 
-<div class="card p-4 align-items-center roboto-font" style="width: 36rem;">
+<div>
+  <ul class="steps">
+    <li class="completed">Cart</li>
+    <li>></li>
+    <li class="active">Details</li>
+    <li>></li>
+    <li class="upcoming">Shipping</li>
+    <li>></li>
+    <li class="upcoming">Payments</li>
+  </ul>
 
-  <div class="container mt-4">
+  <div class="section-heading">
+    <h5>Contact</h5>
+    <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
+  </div>
 
-    <ul class="steps">
-      <li class="completed">Cart</li>
-      <li class="active">Details</li>
-      <li class="upcoming">Shipping</li>
-      <li class="upcoming">Payments</li>
-    </ul>
-
-
-    <div class="section-heading">
-      <h5>Contact</h5>
-      <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
-    </div>
-
+  <form method="post" action="{% url 'core_app:checkout_details' %}">
+    {% csrf_token %}
     <div class="mb-3">
-      <input type="email" class="form-control" placeholder="Email or Phone Number">
+      <input type="email" type="email" class="form-control" placeholder="Email or Phone Number">
     </div>
     <div class="form-check mb-4">
-      <input class="form-check-input" type="checkbox" id="newsletter">
+      <input class="form-check-input" name="newsletter" type="checkbox" id="newsletter">
       <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
     </div>
 
@@ -33,31 +34,31 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First Name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last Name">
-        </div>
+      <div class="col">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name">
       </div>
-
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Address and Number">
+      <div class="col">
+        <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+      </div>
     </div>
 
     <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Shipping Note (Optional)">
+      <input type="text" name="address" class="form-control" placeholder="Address and Number">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="shipping_note" class="form-control" placeholder="Shipping Note (Optional)">
     </div>
 
     <div class="row mb-3">
       <div class="col">
-        <input type="text" class="form-control" placeholder="City">
+        <input type="text" name="city" class="form-control" placeholder="City">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Postal Code">
+        <input type="text" name="postal_code" class="form-control" placeholder="Postal Code">
       </div>
       <div class="col">
-        <select class="form-select">
+        <select class="form-select" name="province">
           <option selected>Province</option>
           <option>Province 1</option>
           <option>Province 2</option>
@@ -66,7 +67,7 @@
     </div>
 
     <div class="mb-3">
-      <select class="form-select">
+      <select class="form-select" name="country">
         <option selected>Country</option>
         <option>Country 1</option>
         <option>Country 2</option>
@@ -74,16 +75,15 @@
     </div>
 
     <div class="form-check mb-4">
-      <input class="form-check-input" type="checkbox" id="save-info">
+      <input class="form-check-input" name="save_info" type="checkbox" id="save-info">
       <label class="form-check-label" for="save-info">Save this information.</label>
     </div>
 
     <div class="btn-custom">
-      <a href="#" class="btn-outline-secondary">Back to Cart</a>
-      <button class="btn btn-primary">Go to Shipping</button>
+      <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
+      <button type="submit" class="btn btn-primary">Go to Shipping</button>
     </div>
-    
-  </div>
+  </form>
 </div>
 
 {% endblock %}
