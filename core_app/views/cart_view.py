@@ -28,7 +28,7 @@ class CartView(View):
         
         # Update the session cart with new quantity values
         request.session['cart'] = cart
-        messages.success(request, "Hello World.")
+
         return render(request, 'core_app/cart.html', {'items': items, 'cart_count': sum(cart.values()), 'subTotal': subTotal})
     
     def post(self, request):

@@ -33,12 +33,9 @@
         <div class="col">
             <nav>
                 <h1 class="stick-no-bills-font fw-bold pt-4 px-4" ><a class="navbar-brand stick-no-bills-font fs-1 fw-normal" href="{% url 'core_app:index' %}">Candles</a></h1>
-                
+
             </nav>
             <div class="px-5 align-items-center roboto-font">
-                {% for msg in messages %}
-                <p>{{ msg }}</p>
-                {% endfor %}
                 {% block body_block %}
                 {% endblock %}
             </div>
