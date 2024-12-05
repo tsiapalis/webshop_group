@@ -30,14 +30,15 @@
 
 <body>
     <div class="bg-white d-flex col">
-        {% for msg in messages %}
-        <p>{{ msg }}</p>
-        {% endfor %}
         <div class="col">
             <nav>
                 <h1 class="stick-no-bills-font fw-bold pt-4 px-4">Candles</h3>
             </nav>
             <div class="px-5 align-items-center roboto-font">
+                <p>hi</p>
+                {% for msg in messages %}
+                <p>{{ msg }}</p>
+                {% endfor %}
                 {% block body_block %}
                 {% endblock %}
             </div>

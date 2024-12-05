@@ -14,7 +14,6 @@ class DetailsView(View):
             item = get_object_or_404(Candle, id=id)
 
             if item.in_stock == 0 or quantity > item.in_stock:
-                # TODO: return to cart provide a message in cart
                 messages.success(request, "The items stock changed.")
                 return HttpResponseRedirect('/cart')
 
@@ -72,7 +71,7 @@ class DetailsView(View):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-class DetailsView(View):
+class ShippingView(View):
     def get(self, request):
         cart = request.session.get('cart', {})    
         
