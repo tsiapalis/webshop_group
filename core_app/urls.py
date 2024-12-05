@@ -5,7 +5,7 @@ from .views.auth_views import LoginView, RegisterView, ResetPasswordView, logout
 from .views.discovery_view import Discovery
 from .views.review_view import ReviewView
 from .views.cart_view import CartView
-from .views.checkout_view import DetailsView
+from .views.checkout_view import DetailsView, ShippingView
 from .views.profile_view import InfoChangeView, BillingPayments, Settings, TransactionsHistory
 
 
@@ -31,5 +31,5 @@ urlpatterns = [
     path('my-profile/settings', Settings.as_view(), name='settings'),
     # Checkout Views
     path('checkout/details', DetailsView.as_view(), name='checkout_details'),
-    path('checkout/shipping', DetailsView.as_view(), name='checkout_shipping'),
+    path('checkout/shipping', ShippingView.as_view(), name='checkout_shipping'),
 ]

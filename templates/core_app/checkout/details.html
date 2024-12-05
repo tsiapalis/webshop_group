@@ -14,17 +14,19 @@
     <li class="upcoming">Payments</li>
   </ul>
 
+  
   <div class="section-heading">
     <h5>Contact</h5>
-    <span><i>Do you have an account?</i><span> <a href="#" class="text-primary">Login</a>
+    <span><i>Do you have an account?</i><span> <a href="{% url 'core_app:login' %}" class="text-primary">Login</a>
   </div>
 
   <form method="post" action="{% url 'core_app:checkout_details' %}">
     {% csrf_token %}
     <div class="mb-3">
-      <input type="email" type="email" class="form-control" placeholder="Email or Phone Number">
+      <input type="email" name="email" class="form-control" placeholder="Email or Phone Number">
     </div>
     <div class="form-check mb-4">
+      <input type="hidden" name="newsletter" value="off">
       <input class="form-check-input" name="newsletter" type="checkbox" id="newsletter">
       <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
     </div>
@@ -35,15 +37,15 @@
 
     <div class="row mb-3">
       <div class="col">
-        <input type="text" name="first_name" class="form-control" placeholder="First Name">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
       </div>
       <div class="col">
-        <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+        <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
       </div>
     </div>
 
     <div class="mb-3">
-      <input type="text" name="address" class="form-control" placeholder="Address and Number">
+      <input type="text" name="address" class="form-control" placeholder="Address and Number" required>
     </div>
 
     <div class="mb-3">
@@ -52,13 +54,13 @@
 
     <div class="row mb-3">
       <div class="col">
-        <input type="text" name="city" class="form-control" placeholder="City">
+        <input type="text" name="city" class="form-control" placeholder="City" required>
       </div>
       <div class="col">
-        <input type="text" name="postal_code" class="form-control" placeholder="Postal Code">
+        <input type="text" name="postal_code" class="form-control" placeholder="Postal Code" required>
       </div>
       <div class="col">
-        <select class="form-select" name="province">
+        <select class="form-select" name="province" required>
           <option selected>Province</option>
           <option>Province 1</option>
           <option>Province 2</option>
@@ -67,7 +69,7 @@
     </div>
 
     <div class="mb-3">
-      <select class="form-select" name="country">
+      <select class="form-select" name="country" required>
         <option selected>Country</option>
         <option>Country 1</option>
         <option>Country 2</option>
@@ -75,13 +77,14 @@
     </div>
 
     <div class="form-check mb-4">
+      <input type="hidden" name="save_info" value="off">
       <input class="form-check-input" name="save_info" type="checkbox" id="save-info">
       <label class="form-check-label" for="save-info">Save this information.</label>
     </div>
 
     <div class="btn-custom">
       <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
-      <button type="submit" class="btn btn-primary">Go to Shipping</button>
+      <button type="submit" class="btn btn-primary" href="{% url 'core_app:checkout_shipping' %}">Go to Shipping</button>
     </div>
   </form>
 </div>
