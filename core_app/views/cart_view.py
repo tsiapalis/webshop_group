@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from ..models import Candle
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 class CartView(View):
     def get(self, request):
@@ -27,7 +28,7 @@ class CartView(View):
         
         # Update the session cart with new quantity values
         request.session['cart'] = cart
-
+        messages.success(request, "Hello World.")
         return render(request, 'core_app/cart.html', {'items': items, 'cart_count': sum(cart.values()), 'subTotal': subTotal})
     
     def post(self, request):
