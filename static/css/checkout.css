@@ -37,3 +37,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.credit-card-header {
+    background: rgb(253, 253, 253);
+    background: linear-gradient(90deg, rgba(253, 253, 253, 1) 0%, rgba(86, 178, 128, 1) 100%);
+}

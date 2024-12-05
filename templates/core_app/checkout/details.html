@@ -14,7 +14,7 @@
     <li class="upcoming">Payments</li>
   </ul>
 
-  
+
   <div class="section-heading">
     <h5>Contact</h5>
     <span><i>Do you have an account?</i><span> <a href="{% url 'core_app:login' %}" class="text-primary">Login</a>
@@ -60,19 +60,16 @@
         <input type="text" name="postal_code" class="form-control" placeholder="Postal Code" required>
       </div>
       <div class="col">
-        <select class="form-select" name="province" required>
-          <option selected>Province</option>
-          <option>Province 1</option>
-          <option>Province 2</option>
-        </select>
+        <input type="text" name="province" class="form-control" placeholder="Province" required>
       </div>
     </div>
 
     <div class="mb-3">
       <select class="form-select" name="country" required>
         <option selected>Country</option>
-        <option>Country 1</option>
-        <option>Country 2</option>
+        <option>Sweden</option>
+        <option>Denmark</option>
+        <option>Denmark</option>
       </select>
     </div>
 
@@ -84,7 +81,7 @@
 
     <div class="btn-custom">
       <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
-      <button type="submit" class="btn btn-primary" href="{% url 'core_app:checkout_shipping' %}">Go to Shipping</button>
+      <button type="submit" class="btn btn-primary">Go to Shipping</button>
     </div>
   </form>
 </div>
