@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from ..models import Candle
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 class CartView(View):
     def get(self, request):
@@ -46,7 +47,6 @@ class CartView(View):
     def delete(self, request, item_id):
         cart = request.session.get('cart', {})
         if cart and cart[item_id]:
-            print("in here")
             cart.pop(item_id)
             request.session['cart'] = cart 
 

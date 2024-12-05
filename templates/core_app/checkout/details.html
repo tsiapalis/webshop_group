@@ -1,0 +1,89 @@
+{% extends "core_app/checkout/base.html" %}
+{% load static %}
+{% block body_block %}
+
+
+<div>
+  <ul class="steps">
+    <li class="completed">Cart</li>
+    <li>></li>
+    <li class="active">Details</li>
+    <li>></li>
+    <li class="upcoming">Shipping</li>
+    <li>></li>
+    <li class="upcoming">Payments</li>
+  </ul>
+
+
+  <div class="section-heading">
+    <h5>Contact</h5>
+    <span><i>Do you have an account?</i><span> <a href="{% url 'core_app:login' %}" class="text-primary">Login</a>
+  </div>
+
+  <form method="post" action="{% url 'core_app:checkout_details' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input type="email" name="email" class="form-control" placeholder="Email or Phone Number">
+    </div>
+    <div class="form-check mb-4">
+      <input type="hidden" name="newsletter" value="off">
+      <input class="form-check-input" name="newsletter" type="checkbox" id="newsletter">
+      <label class="form-check-label" for="newsletter">Add me to Candles newsletter.</label>
+    </div>
+
+    <div class="section-heading">
+      <h5>Shipping Address</h5>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+      </div>
+      <div class="col">
+        <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="address" class="form-control" placeholder="Address and Number" required>
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="shipping_note" class="form-control" placeholder="Shipping Note (Optional)">
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" name="city" class="form-control" placeholder="City" required>
+      </div>
+      <div class="col">
+        <input type="text" name="postal_code" class="form-control" placeholder="Postal Code" required>
+      </div>
+      <div class="col">
+        <input type="text" name="province" class="form-control" placeholder="Province" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <select class="form-select" name="country" required>
+        <option selected>Country</option>
+        <option>Sweden</option>
+        <option>Denmark</option>
+        <option>Denmark</option>
+      </select>
+    </div>
+
+    <div class="form-check mb-4">
+      <input type="hidden" name="save_info" value="off">
+      <input class="form-check-input" name="save_info" type="checkbox" id="save-info">
+      <label class="form-check-label" for="save-info">Save this information.</label>
+    </div>
+
+    <div class="btn-custom">
+      <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
+      <button type="submit" class="btn btn-primary">Go to Shipping</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "core_app/checkout/base.html" %}
+{% load static %}
+{% block body_block %}
+
+
+<div>
+    <ul class="steps">
+        <li class="completed">Cart</li>
+        <li>></li>
+        <li class="completed">Details</li>
+        <li>></li>
+        <li class="active">Shipping</li>
+        <li>></li>
+        <li class="upcoming">Payments</li>
+    </ul>
+
+    <form method="post" action="{% url 'core_app:checkout_shipping' %}">
+        {% csrf_token %}
+
+        <div class="section-heading">
+            <h5>Payment method</h5>
+        </div>
+
+        <div class="mb-3 border border-dark rounded shadow-sm">
+            <div class="p-3">
+                <div class="d-flex col mb-3">
+                    <p class="m-2" style="width: 50px;">Contact</p>
+                    <input value="{{ contact }}" type=" text" name="contact" class="form-control" placeholder="Contact">
+                </div>
+                <div class="d-flex col mb-3">
+                    <p class="m-2" style="width: 50px;">Ship to</p>
+                    <input value="{{ ship_to }}" type="text" name="ship_to" class="form-control" placeholder="Ship to">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading">
+            <h5>Shipping method</h5>
+        </div>
+
+        <div class="mb-3 border border-dark rounded shadow-sm d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <input type="radio" name="standard_shipping" class="form-check-input m-4" id="standard_shipping">
+                <label class="form-check-label m-0" for="standard_shipping">Standard Shipping</label>
+            </div>
+            <span class="text-success me-3">Free</span>
+        </div>
+
+
+        <div class="btn-custom">
+            <a href="{% url 'core_app:checkout_shipping' %}" class="btn-outline-secondary text-success">Back to
+                details</a>
+            <button type="submit" class="btn btn-success">Go to payment</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

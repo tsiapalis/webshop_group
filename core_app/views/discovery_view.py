@@ -1,6 +1,6 @@
 from django.views import View
 from ..models import Candle
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 
@@ -59,4 +59,8 @@ class Discovery(View):
 
         request.session['cart'] = cart 
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        url = reverse('core_app:discovery')
+        if item_id:
+            url = f'{url}#{item_id}'
+
+        return HttpResponseRedirect(url)

@@ -4,6 +4,16 @@
 
 {% block body_block %}
 <div class="container mt-100 mt-60 p-5">
+    {% if messages %}
+    <dialog open>
+        {% for msg in messages %}
+        <p class="roboto-font text-danger">{{ msg }}</p>
+        {% endfor %}
+        <form method="dialog">
+            <button>OK</button>
+        </form>
+    </dialog>
+    {% endif %}
     <div class="row">
         <section class="cart roboto-font">
             <h1 class="fs-2 text-dark text-align-center">Your cart items</h1>
@@ -61,9 +71,11 @@
                 <p style="text-align:start;">Tax and shipping cost will be calculated later</p>
 
                 <section class="d-flex justify-content-start">
-                    <button class="btn btn-outline-success fs-4 w-full text-center">
-                        Check-out
-                    </button>
+                    <a href="{% url 'core_app:checkout_details' %}">
+                        <button class="btn btn-outline-success fs-4 w-full text-center">
+                            Check-out
+                        </button>
+                    </a>
                 </section>
             </div>
         </section>

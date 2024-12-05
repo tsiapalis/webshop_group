@@ -1,0 +1,69 @@
+{% extends "core_app/checkout/base.html" %}
+{% load static %}
+{% block body_block %}
+
+
+<div>
+    <ul class="steps">
+        <li class="completed">Cart</li>
+        <li>></li>
+        <li class="completed">Details</li>
+        <li>></li>
+        <li class="completed">Shipping</li>
+        <li>></li>
+        <li class="active">Payments</li>
+    </ul>
+
+    <form method="post" action="{% url 'core_app:checkout_payment' %}">
+        {% csrf_token %}
+
+        <div class="section-heading">
+            <h5>Payment method</h5>
+        </div>
+
+        <div class="mb-3 border border-dark rounded shadow-sm">
+            <div class="credit-card-header text-success d-flex align-items-center gap-2 p-3">
+                <span class="material-symbols-outlined" style="font-size: 24px;">
+                    credit_card
+                </span>
+                <h5 class="mb-0">Credit Card</h5>
+            </div>
+
+            <div class="p-3">
+                <div class="mb-3">
+                    <input type="text" name="card_number" class="form-control" placeholder="Card Number">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="holder_name" class="form-control" placeholder="Holder Name">
+                </div>
+                <div class="row g-2">
+                    <div class="col">
+                        <input type="text" name="expiration_date" class="form-control" placeholder="Expiration (MM/YY)">
+                    </div>
+                    <div class="col">
+                        <input type="text" name="cvv" class="form-control" placeholder="CVV">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading">
+            <h5>Tax Informations</h5>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" name="vat_number" class="form-control" placeholder="Vat Number (optional)">
+        </div>
+        <div class="mb-3">
+            <input type="text" name="pec" class="form-control" placeholder="PEC (Optional)">
+        </div>
+
+        <div class="btn-custom">
+            <a href="{% url 'core_app:checkout_shipping' %}" class="btn-outline-secondary text-success">Back to
+                shipping</a>
+            <button type="submit" class="btn btn-success">Pay now</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
