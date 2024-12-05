@@ -8,17 +8,17 @@
     <ul class="steps mb-4">
         <li class="completed">Cart</li>
         <li>></li>
-        <li class="active">Details</li>
+        <li class="completed">Details</li>
         <li>></li>
-        <li class="upcoming">Shipping</li>
+        <li class="completed">Shipping</li>
         <li>></li>
-        <li class="upcoming">Payments</li>
+        <li class="active">Payments</li>
     </ul>
 
     <div class="row">
         <!-- Left side: Payment details -->
         <div class="col-md-12">
-            <div class="card shadow-sm p-4 mx-auto">
+            <div class="card shadow-none p-4 mx-auto" style="border: none;"> <!-- Removed border -->
                 <h2 class="mb-3">Payment</h2>
                 <div class="mb-3">
                     <!-- Displaying the Contact Information from Session -->
@@ -29,6 +29,7 @@
 
                 <h3 class="mt-4">Payment Method</h3>
                 <form method="POST" action="{% url 'core_app:checkout_payment' %}">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="card-number">Card Number</label>
                         <input type="text" class="form-control" id="card-number" placeholder="Card Number">
@@ -73,16 +74,13 @@
                     </div>
 
                     <div class="btn-custom">
-                        <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary">Back to Cart</a>
-                        <button type="submit" class="btn btn-primary">Pay Now</button>
-                      </div>
+                        <a href="{% url 'core_app:cart' %}" class="btn-outline-secondary" style="border: none;">Back to Cart</a>
+                        <button type="submit" class="btn btn-primary" style="border: none;">Pay Now</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-    
 </div>
-
 
 {% endblock %}
