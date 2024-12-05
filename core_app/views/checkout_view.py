@@ -144,6 +144,8 @@ class PaymentView(View):
             item.in_stock -= quantity
             item.save()
         
+        checkout = request.session.get('checkout', {})
+
         #order = Order(user={}, item=items, created_at=datetime.now(), shipping=checkout['shipping'])
         #order.save()
 
@@ -170,12 +172,15 @@ class PaymentView(View):
 
 class PaymentConfirmedView(View):
     def get(self, request):
-        cart = request.session.get('cart', {})
-
         items, subTotal = CheckoutUtils.process_cart(request)
 
         if items is None:
             return redirect('/cart')
 
-        total = subTotal # + shipping type
+        checkout = request.session.get('checkout', {})
+        shipping_cost = checkout['shipping']['cost']
+
+        total = subTotal + shipping_cost
+        request.session['cart'] = {}
+        request.session['checkout'] = {}
         return render(request, 'core_app/checkout/payment_confirmed.html', {'items': items, 'subTotal': subTotal, 'shipping': 'Free Shipping', 'paid': total})
