@@ -37,33 +37,13 @@ class DetailsView(View):
         return render(request, 'core_app/checkout/details.html', {'items': items, 'subTotal': subTotal})
 
     def post(self, request):
-        email = request.POST.get('email')
-        newsletter = request.POST.get('newsletter')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        address = request.POST.get('address')
-        shipping_note = request.POST.get('shipping_note')
-        city = request.POST.get('city')
-        postal_code = request.POST.get('postal_code')
-        province = request.POST.get('province')
-        country = request.POST.get('country')
-        save_info = request.POST.get('save_info')
-
-
+        allowed_keys = [
+            'email', 'newsletter', 'first_name', 'last_name', 'address', 
+            'shipping_note', 'city', 'postal_code', 'province', 'country', 'save_info'
+        ]
+        details = {key: request.POST.get(key) for key in allowed_keys}
         checkout = request.session.get('checkout', {})
-        checkout['details'] = {
-            "email": email,
-            "newsletter": newsletter,
-            "first_name": first_name,
-            "last_name": last_name,
-            "address": address,
-            "shipping_note": shipping_note,
-            "city": city,
-            "postal_code": postal_code,
-            "province": province,
-            "country": country,
-            "save_info": save_info,
-        }
+        checkout['details'] = details
         request.session['checkout'] = checkout
 
         return HttpResponseRedirect(reverse('core_app:checkout_shipping'))
@@ -81,18 +61,12 @@ class ShippingView(View):
         return render(request, 'core_app/checkout/shipping.html', {'items': items, 'subTotal': subTotal, 'contact': contact, 'ship_to': ship_to})
     
     def post(self, request):
-        contact = request.POST.get('contact')
-        ship_to = request.POST.get('ship_to')
-        standard_shipping = request.POST.get('standard_shipping')
+        allowed_keys = ['contact', 'ship_to', 'standard_shipping']
+        shipping = {key: request.POST.get(key) for key in allowed_keys}
 
         checkout = request.session.get('checkout', {})
         checkout['shipping'] = {
-            "contact": contact,
-            "ship_to": ship_to,
-            "delivery_method": {
-                'standard_shipping': standard_shipping,
-                'express': False
-            },
+            **shipping,
             "cost": 0
         }
         request.session['checkout'] = checkout
@@ -114,12 +88,23 @@ class PaymentView(View):
         return render(request, 'core_app/checkout/payment.html', {'items': items, 'subTotal': subTotal, 'shipping': shipping_cost, 'total': total  })
     
     def post(self, request):
-        card_number = request.POST.get('card_number')
-        holder_name = request.POST.get('holder_name')
-        expiration_date = request.POST.get('expiration_date')
-        cvv = request.POST.get('cvv')
-        vat_number = request.POST.get('vat_number')
-        pec = request.POST.get('pec')
+        allowed_keys = [
+            'card_number', 'holder_name', 'expiration_date', 
+            'cvv', 'vat_number', 'pec'
+        ]
+
+        payment_details = {key: request.POST.get(key) for key in allowed_keys}
+
+        # check payment details
+        payment_success = True
+
+        if not payment_success:
+            messages.warning(
+                request,
+                f"Unfortunately, the item payment failed. "
+            )
+            return redirect('/cart')
+        
 
         checkout = request.session.get('checkout', {})
 
@@ -146,27 +131,34 @@ class PaymentView(View):
         
         checkout = request.session.get('checkout', {})
 
-        #order = Order(user={}, item=items, created_at=datetime.now(), shipping=checkout['shipping'])
-        #order.save()
+        user = {}
+        if request.user.is_authenticated:
+            user = request.user
+        else:
+            details = checkout.get('details', {})
+            user = User.objects.filter(email=details.get('email')).first()
 
-        ''' TODO: the 'details' dict will be you used for the shipping address model we will add later.
-        
-        # details = request.session.get('details', {})
-        
-        # for key in request.POST.keys():
-        #     if key != "csrfmiddlewaretoken":
-        #         details[key] = request.POST.get(key)
-        
-        '''
+            # Create a temporary user with a random password (guest user case)
+            if not user:
+                user = User.objects.create_user(
+                    username=details.get('email', 'guest_user'),
+                    email=details.get('email', ''),
+                    password=User.objects.make_random_password(),
+                    first_name=details.get('first_name', ''),
+                    last_name=details.get('last_name', ''),
+                )
 
-        # Add to Order and OrderItem. I think its better if we move this block to payment view.
-        cart = request.session.get('cart', {})
+        order = Order.objects.create(
+            user=user,
+            created_at=datetime.now()
+        )
 
-        order = Order.objects.create(user=request.user)
-        for key, value in cart.items():
-            candle = Candle.objects.get(id=key)
-            OrderItem.objects.create(order=order, item=candle, quantity=value)
-
+        for item in items:
+            OrderItem.objects.create(
+                order=order,
+                item=item['item'],
+                quantity=item['quantity']
+            )
 
         return HttpResponseRedirect(reverse('core_app:payment_confirmed'))
 
