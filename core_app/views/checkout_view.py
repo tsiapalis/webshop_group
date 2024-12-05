@@ -115,7 +115,7 @@ class ShippingView(View):
 class PaymentView(View):
     def get(self, request):
         cart = request.session.get('cart', {})    
-        cart = request.session.get('cart', {}) 
+        #cart = request.session.get('cart', {}) 
         subTotal = 0
         items = []
         for id, quantity in cart.items():
@@ -123,12 +123,13 @@ class PaymentView(View):
 
             if item.in_stock == 0 or quantity > item.in_stock:
                 # TODO: return to cart provide a message in cart
+                messages.error(request, f"Insufficient stock for '{item.title}'. Please update you cart.")
                 HttpResponseRedirect('/cart')
 
             items.append({'item': item, 'quantity': quantity})
             subTotal += item.price * quantity
 
-        return render(request, 'core_app/checkout/details.html', {'items': items, 'subTotal': subTotal})
+        return render(request, 'core_app/checkout/payment.html', {'items': items, 'subTotal': subTotal})
     
     def post(self, request):
         card_number = request.POST.get('card_number')
